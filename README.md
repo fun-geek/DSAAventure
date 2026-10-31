@@ -258,7 +258,6 @@ challenges/questions.json
 
 Problem difficulty, topics, LeetCode links and company-frequency information are sourced from:
 
-[liquidslr/leetcode-company-wise-problems](https://github.com/liquidslr/leetcode-company-wise-problems)
 
 Problem statements, examples, hints, test cases and solutions are original.
 
