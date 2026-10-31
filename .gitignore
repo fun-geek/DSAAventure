@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Game saves and SQLite temporary files
+saves/*.db
+saves/*.db-*
+saves/*.sqlite
+saves/*.sqlite-*
+saves/*.sqlite3
+saves/*.sqlite3-*
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Editor settings
+.idea/
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

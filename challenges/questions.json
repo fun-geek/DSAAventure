@@ -1,0 +1,9529 @@
+{
+ "generated_from": "https://github.com/liquidslr/leetcode-company-wise-problems",
+ "questions": [
+  {
+   "id": "array_two_sum",
+   "world": 1,
+   "order": 1,
+   "title": "Two Sum",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Hash Table"
+   ],
+   "complexity": "O(n) time, O(n) space",
+   "description": "Given a list of integers `nums` and an integer `target`, find the two different positions whose values add up to `target`. Exactly one such pair exists. Return the two indices in increasing order.",
+   "constraints": [
+    "2 <= len(nums) <= 10^4",
+    "Exactly one pair of positions sums to target"
+   ],
+   "examples": [
+    {
+     "input": "nums = [2, 7, 11, 15], target = 9",
+     "output": "[0, 1]",
+     "note": "nums[0] + nums[1] = 2 + 7 = 9"
+    },
+    {
+     "input": "nums = [3, 2, 4], target = 6",
+     "output": "[1, 2]",
+     "note": ""
+    }
+   ],
+   "function": "twoSum",
+   "signature": "def twoSum(nums, target):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums",
+    "target"
+   ],
+   "starter": "def twoSum(nums, target):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       2,
+       7,
+       11,
+       15
+      ],
+      9
+     ],
+     "expected": [
+      0,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       2,
+       4
+      ],
+      6
+     ],
+     "expected": [
+      1,
+      2
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1,
+       2
+      ],
+      3
+     ],
+     "expected": [
+      0,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       -3,
+       4,
+       3,
+       90
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       -5,
+       4,
+       0
+      ],
+      4
+     ],
+     "expected": [
+      1,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       12,
+       -15,
+       13,
+       7,
+       -8,
+       3,
+       -11,
+       -5
+      ],
+      -16
+     ],
+     "expected": [
+      6,
+      7
+     ]
+    },
+    {
+     "args": [
+      [
+       -10,
+       1,
+       9,
+       3,
+       -5,
+       -3
+      ],
+      -7
+     ],
+     "expected": [
+      0,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       -5,
+       4,
+       -15,
+       -14,
+       -10,
+       1
+      ],
+      5
+     ],
+     "expected": [
+      1,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       -12,
+       2,
+       -7,
+       -13,
+       10,
+       8,
+       -11
+      ],
+      -25
+     ],
+     "expected": [
+      0,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       9,
+       -6,
+       14,
+       -10,
+       6,
+       -7,
+       -4
+      ],
+      -10
+     ],
+     "expected": [
+      1,
+      6
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       12,
+       3,
+       14
+      ],
+      17
+     ],
+     "expected": [
+      2,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       8,
+       -11,
+       12,
+       0,
+       2,
+       10,
+       -4
+      ],
+      -9
+     ],
+     "expected": [
+      1,
+      4
+     ]
+    }
+   ],
+   "hints": [
+    "Brute force checks every pair: O(n^2). Can you remember what you have already seen?",
+    "For each x you need the value target - x. A dictionary can tell you instantly if it was seen.",
+    "Store value -> index as you go, and check the dictionary before inserting."
+   ],
+   "beginner": {
+    "prompt": "Which approach solves Two Sum in a single pass?",
+    "options": [
+     "Store each number's index in a hash map and look up target - x",
+     "Sort the list and use two pointers on the sorted copy",
+     "Try every pair with two nested loops",
+     "Binary search for target / 2"
+    ],
+    "answer": 0,
+    "explanation": "A dictionary remembers values seen so far, so each lookup of target - x is O(1) and the whole scan is O(n)."
+   },
+   "intermediate": {
+    "template": "def twoSum(nums, target):\n    seen = {}\n    for i, x in enumerate(nums):\n        if @@1@@:\n            return [seen[target - x], i]\n        @@2@@\n",
+    "blanks": [
+     {
+      "answer": "target - x in seen"
+     },
+     {
+      "answer": "seen[x] = i"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Two Sum",
+    "link": "https://leetcode.com/problems/two-sum",
+    "companies": 113,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "array_stock",
+   "world": 1,
+   "order": 2,
+   "title": "Best Time to Buy and Sell Stock",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Dynamic Programming"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "`prices[i]` is a stock's price on day i. Choose one day to buy and a later day to sell to earn the largest profit. Return that profit, or 0 if every possible trade would lose money.",
+   "constraints": [
+    "1 <= len(prices) <= 10^5",
+    "0 <= prices[i] <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "prices = [7, 1, 5, 3, 6, 4]",
+     "output": "5",
+     "note": "Buy at 1, sell at 6: profit 5"
+    },
+    {
+     "input": "prices = [7, 6, 4, 3, 1]",
+     "output": "0",
+     "note": "Prices only fall, so do not trade"
+    }
+   ],
+   "function": "maxProfit",
+   "signature": "def maxProfit(prices):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "prices"
+   ],
+   "starter": "def maxProfit(prices):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       7,
+       1,
+       5,
+       3,
+       6,
+       4
+      ]
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       7,
+       6,
+       4,
+       3,
+       1
+      ]
+     ],
+     "expected": 0
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       5
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       2,
+       1,
+       2,
+       0,
+       1
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       13,
+       3
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       19,
+       11,
+       30,
+       1,
+       4,
+       22,
+       7,
+       4
+      ]
+     ],
+     "expected": 21
+    },
+    {
+     "args": [
+      [
+       15,
+       26,
+       21,
+       23,
+       11,
+       1,
+       13,
+       20
+      ]
+     ],
+     "expected": 19
+    },
+    {
+     "args": [
+      [
+       6,
+       26,
+       29,
+       17,
+       16,
+       7,
+       20,
+       0
+      ]
+     ],
+     "expected": 23
+    },
+    {
+     "args": [
+      [
+       13,
+       26,
+       11,
+       27,
+       14,
+       24,
+       26,
+       25,
+       25,
+       10,
+       14,
+       0
+      ]
+     ],
+     "expected": 16
+    },
+    {
+     "args": [
+      [
+       1,
+       0,
+       19,
+       23,
+       13
+      ]
+     ],
+     "expected": 23
+    },
+    {
+     "args": [
+      [
+       26,
+       15,
+       9,
+       7,
+       9,
+       17,
+       30,
+       19,
+       1
+      ]
+     ],
+     "expected": 23
+    },
+    {
+     "args": [
+      [
+       16,
+       3,
+       9,
+       17,
+       29,
+       27,
+       25
+      ]
+     ],
+     "expected": 26
+    }
+   ],
+   "hints": [
+    "Selling on day i is best when you bought at the cheapest earlier price.",
+    "Track the lowest price seen so far while scanning once."
+   ],
+   "beginner": {
+    "prompt": "How do you find the best profit in one pass?",
+    "options": [
+     "Sort the prices and subtract first from last",
+     "Compare every pair of days",
+     "Track the lowest price so far and the best (price - lowest)",
+     "Subtract the global minimum from the global maximum"
+    ],
+    "answer": 2,
+    "explanation": "At each day the best sale uses the cheapest earlier price; keeping a running minimum gives O(n)."
+   },
+   "intermediate": {
+    "template": "def maxProfit(prices):\n    best = 0\n    lowest = float(\"inf\")\n    for p in prices:\n        @@1@@\n        @@2@@\n    return best\n",
+    "blanks": [
+     {
+      "answer": "lowest = min(lowest, p)"
+     },
+     {
+      "answer": "best = max(best, p - lowest)"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Best Time to Buy and Sell Stock",
+    "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock",
+    "companies": 81,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "array_max_subarray",
+   "world": 1,
+   "order": 3,
+   "title": "Maximum Subarray",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Divide and Conquer",
+    "Dynamic Programming"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "Find the contiguous, non-empty part of `nums` with the largest sum and return that sum.",
+   "constraints": [
+    "1 <= len(nums) <= 10^5",
+    "-10^4 <= nums[i] <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+     "output": "6",
+     "note": "The part [4, -1, 2, 1] sums to 6"
+    },
+    {
+     "input": "nums = [1]",
+     "output": "1",
+     "note": ""
+    }
+   ],
+   "function": "maxSubArray",
+   "signature": "def maxSubArray(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def maxSubArray(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       -2,
+       1,
+       -3,
+       4,
+       -1,
+       2,
+       1,
+       -5,
+       4
+      ]
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       1
+      ]
+     ],
+     "expected": 1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       -1
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -3,
+       -1,
+       -2
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       5,
+       -9,
+       6
+      ]
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       6,
+       5,
+       2
+      ]
+     ],
+     "expected": 13
+    },
+    {
+     "args": [
+      [
+       -10,
+       6,
+       10,
+       7,
+       7,
+       4,
+       -2,
+       -9,
+       -3,
+       -2,
+       -4
+      ]
+     ],
+     "expected": 34
+    },
+    {
+     "args": [
+      [
+       2,
+       0,
+       -5,
+       0,
+       10
+      ]
+     ],
+     "expected": 10
+    },
+    {
+     "args": [
+      [
+       -8,
+       0,
+       6,
+       -5,
+       -5,
+       5
+      ]
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       -1,
+       6,
+       -2,
+       -7,
+       -5,
+       5,
+       8,
+       -3,
+       -8,
+       -2
+      ]
+     ],
+     "expected": 13
+    },
+    {
+     "args": [
+      [
+       -2,
+       3,
+       4,
+       -5,
+       -6,
+       -2,
+       -5,
+       7,
+       -8,
+       -2,
+       -1,
+       7
+      ]
+     ],
+     "expected": 7
+    },
+    {
+     "args": [
+      [
+       -3,
+       -2,
+       9,
+       -6,
+       5
+      ]
+     ],
+     "expected": 9
+    },
+    {
+     "args": [
+      [
+       -9,
+       4
+      ]
+     ],
+     "expected": 4
+    }
+   ],
+   "hints": [
+    "A running sum that goes negative only drags later elements down.",
+    "At each element either extend the current sum or start fresh from this element."
+   ],
+   "beginner": {
+    "prompt": "At every element, Kadane's algorithm chooses to:",
+    "options": [
+     "Add only the positive numbers",
+     "Sort the numbers first",
+     "Always restart the sum at zero",
+     "Extend the running sum or start fresh here, whichever is larger"
+    ],
+    "answer": 3,
+    "explanation": "cur = max(x, cur + x) keeps the best sum of a subarray ending here; the answer is the best cur seen."
+   },
+   "intermediate": {
+    "template": "def maxSubArray(nums):\n    best = cur = nums[0]\n    for x in nums[1:]:\n        @@1@@\n        @@2@@\n    return best\n",
+    "blanks": [
+     {
+      "answer": "cur = max(x, cur + x)"
+     },
+     {
+      "answer": "best = max(best, cur)"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Maximum Subarray",
+    "link": "https://leetcode.com/problems/maximum-subarray",
+    "companies": 56,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "array_contains_duplicate",
+   "world": 1,
+   "order": 4,
+   "title": "Contains Duplicate",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+   ],
+   "complexity": "O(n) time, O(n) space",
+   "description": "Return True if any value appears at least twice in `nums`, otherwise return False.",
+   "constraints": [
+    "1 <= len(nums) <= 10^5"
+   ],
+   "examples": [
+    {
+     "input": "nums = [1, 2, 3, 1]",
+     "output": "True",
+     "note": "1 appears twice"
+    },
+    {
+     "input": "nums = [1, 2, 3, 4]",
+     "output": "False",
+     "note": ""
+    }
+   ],
+   "function": "containsDuplicate",
+   "signature": "def containsDuplicate(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def containsDuplicate(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       1
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4
+      ]
+     ],
+     "expected": false
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       2,
+       2
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       5,
+       7,
+       0,
+       9,
+       7,
+       9,
+       3
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       1,
+       11,
+       1,
+       4
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       7,
+       3,
+       7,
+       1,
+       2
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       12,
+       8,
+       1,
+       2
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       1,
+       2,
+       1,
+       9
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       8,
+       11,
+       9,
+       1,
+       11,
+       12,
+       0,
+       12
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       9,
+       2
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       1,
+       7,
+       8,
+       8,
+       8,
+       1,
+       3,
+       5,
+       11
+      ]
+     ],
+     "expected": true
+    }
+   ],
+   "hints": [
+    "Comparing every pair is O(n^2).",
+    "A set answers 'have I seen this?' in O(1)."
+   ],
+   "beginner": {
+    "prompt": "What is a fast way to detect any duplicate?",
+    "options": [
+     "Count the zeros",
+     "Reverse the list",
+     "Compare every pair",
+     "Insert values into a set and stop when one is already there"
+    ],
+    "answer": 3,
+    "explanation": "Set membership is O(1) on average, so one pass is O(n)."
+   },
+   "intermediate": {
+    "template": "def containsDuplicate(nums):\n    seen = set()\n    for x in nums:\n        @@1@@\n            return True\n        @@2@@\n    return False\n",
+    "blanks": [
+     {
+      "answer": "if x in seen:"
+     },
+     {
+      "answer": "seen.add(x)"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Contains Duplicate",
+    "link": "https://leetcode.com/problems/contains-duplicate",
+    "companies": 19,
+    "max_frequency": 96.9
+   }
+  },
+  {
+   "id": "array_move_zeroes",
+   "world": 1,
+   "order": 5,
+   "title": "Move Zeroes",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Two Pointers"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "Rearrange `nums` in place so every zero moves to the end while the non-zero numbers keep their original order. Modify the list itself; do not build a second list.",
+   "constraints": [
+    "1 <= len(nums) <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "nums = [0, 1, 0, 3, 12]",
+     "output": "[1, 3, 12, 0, 0]",
+     "note": "Non-zeros keep their order: 1, 3, 12"
+    },
+    {
+     "input": "nums = [0]",
+     "output": "[0]",
+     "note": ""
+    }
+   ],
+   "function": "moveZeroes",
+   "signature": "def moveZeroes(nums):",
+   "kind": "function",
+   "options": {
+    "inplace": 0
+   },
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def moveZeroes(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       0,
+       1,
+       0,
+       3,
+       12
+      ]
+     ],
+     "expected": [
+      1,
+      3,
+      12,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       0
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ]
+     ],
+     "expected": [
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       0
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       4,
+       5
+      ]
+     ],
+     "expected": [
+      4,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       0
+      ]
+     ],
+     "expected": [
+      3,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       5,
+       0,
+       2,
+       3,
+       2,
+       5,
+       5,
+       2
+      ]
+     ],
+     "expected": [
+      5,
+      2,
+      3,
+      2,
+      5,
+      5,
+      2,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       5,
+       2,
+       0,
+       5,
+       0,
+       3,
+       2
+      ]
+     ],
+     "expected": [
+      5,
+      2,
+      5,
+      3,
+      2,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       5,
+       0,
+       0,
+       5,
+       5,
+       5,
+       0
+      ]
+     ],
+     "expected": [
+      3,
+      5,
+      5,
+      5,
+      5,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       2,
+       0,
+       0,
+       5,
+       5,
+       0,
+       0,
+       2,
+       5,
+       0
+      ]
+     ],
+     "expected": [
+      2,
+      5,
+      5,
+      2,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       5,
+       0,
+       2,
+       5,
+       5,
+       0,
+       0,
+       5,
+       0,
+       3
+      ]
+     ],
+     "expected": [
+      5,
+      2,
+      5,
+      5,
+      5,
+      3,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ]
+     ],
+     "expected": [
+      1,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       0,
+       3,
+       1,
+       2,
+       5
+      ]
+     ],
+     "expected": [
+      3,
+      1,
+      2,
+      5,
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "hints": [
+    "Keep a 'write' position for the next non-zero value.",
+    "After copying all non-zeros forward, fill the rest with zeros."
+   ],
+   "beginner": {
+    "prompt": "Which in-place approach works?",
+    "options": [
+     "Keep a write pointer, copy non-zeros forward, then fill the tail with zeros",
+     "Remove zeros from the front with repeated pop(0)",
+     "Build a new list and return it",
+     "Sort the list descending"
+    ],
+    "answer": 0,
+    "explanation": "The write pointer packs non-zeros to the front in order, in a single pass."
+   },
+   "intermediate": {
+    "template": "def moveZeroes(nums):\n    write = 0\n    for x in nums:\n        if x != 0:\n            @@1@@\n            write += 1\n    @@2@@\n        nums[i] = 0\n",
+    "blanks": [
+     {
+      "answer": "nums[write] = x"
+     },
+     {
+      "answer": "for i in range(write, len(nums)):"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Move Zeroes",
+    "link": "https://leetcode.com/problems/move-zeroes",
+    "companies": 37,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "array_product_except_self",
+   "world": 1,
+   "order": 6,
+   "title": "Product of Array Except Self",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Prefix Sum"
+   ],
+   "complexity": "O(n) time, O(1) extra space",
+   "description": "Return a list `out` where `out[i]` is the product of every element of `nums` except `nums[i]`. Do not use division, and aim for O(n) time.",
+   "constraints": [
+    "2 <= len(nums) <= 10^5",
+    "The answer fits in a 32-bit integer"
+   ],
+   "examples": [
+    {
+     "input": "nums = [1, 2, 3, 4]",
+     "output": "[24, 12, 8, 6]",
+     "note": "out[0] = 2*3*4 = 24"
+    },
+    {
+     "input": "nums = [-1, 1, 0, -3, 3]",
+     "output": "[0, 0, 9, 0, 0]",
+     "note": ""
+    }
+   ],
+   "function": "productExceptSelf",
+   "signature": "def productExceptSelf(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def productExceptSelf(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4
+      ]
+     ],
+     "expected": [
+      24,
+      12,
+      8,
+      6
+     ]
+    },
+    {
+     "args": [
+      [
+       -1,
+       1,
+       0,
+       -3,
+       3
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      9,
+      0,
+      0
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1,
+       1
+      ]
+     ],
+     "expected": [
+      1,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       2
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       -4,
+       3,
+       1,
+       1,
+       -2,
+       -4
+      ]
+     ],
+     "expected": [
+      24,
+      -32,
+      -96,
+      -96,
+      48,
+      24
+     ]
+    },
+    {
+     "args": [
+      [
+       -2,
+       4,
+       3,
+       -2
+      ]
+     ],
+     "expected": [
+      -24,
+      12,
+      16,
+      -24
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       -2,
+       -2,
+       -4
+      ]
+     ],
+     "expected": [
+      -16,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       -4,
+       3,
+       2,
+       1,
+       -3
+      ]
+     ],
+     "expected": [
+      -18,
+      24,
+      36,
+      72,
+      -24
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       2,
+       3,
+       -2,
+       -1,
+       -2,
+       -4,
+       2
+      ]
+     ],
+     "expected": [
+      192,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       -1,
+       -1,
+       -4,
+       -1,
+       3,
+       2,
+       0
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       2,
+       -2,
+       -2,
+       1,
+       -4,
+       -2,
+       2,
+       4
+      ]
+     ],
+     "expected": [
+      256,
+      -256,
+      -256,
+      512,
+      -128,
+      -256,
+      256,
+      128
+     ]
+    },
+    {
+     "args": [
+      [
+       -2,
+       4,
+       4,
+       0,
+       4,
+       -4,
+       -4,
+       2
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      0,
+      -4096,
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "hints": [
+    "Division fails when the list contains zero.",
+    "out[i] = (product to the left of i) * (product to the right of i).",
+    "Fill the left products first, then multiply in the right products from the end."
+   ],
+   "beginner": {
+    "prompt": "Without division, out[i] equals:",
+    "options": [
+     "Sum of left and right",
+     "Total product minus nums[i]",
+     "Product of everything to its left times product of everything to its right",
+     "Total product divided by nums[i]"
+    ],
+    "answer": 2,
+    "explanation": "Two passes - prefix products then suffix products - give every i in O(n)."
+   },
+   "intermediate": {
+    "template": "def productExceptSelf(nums):\n    n = len(nums)\n    out = [1] * n\n    left = 1\n    for i in range(n):\n        out[i] = left\n        @@1@@\n    right = 1\n    for i in range(n - 1, -1, -1):\n        @@2@@\n        right *= nums[i]\n    return out\n",
+    "blanks": [
+     {
+      "answer": "left *= nums[i]"
+     },
+     {
+      "answer": "out[i] *= right"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Product of Array Except Self",
+    "link": "https://leetcode.com/problems/product-of-array-except-self",
+    "companies": 30,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "search_binary_search",
+   "world": 2,
+   "order": 1,
+   "title": "Binary Search",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Binary Search"
+   ],
+   "complexity": "O(log n) time, O(1) space",
+   "description": "`nums` is sorted in ascending order and contains distinct values. Return the index of `target`, or -1 if it is not present. Aim for O(log n).",
+   "constraints": [
+    "1 <= len(nums) <= 10^4",
+    "All values are distinct and sorted"
+   ],
+   "examples": [
+    {
+     "input": "nums = [-1, 0, 3, 5, 9, 12], target = 9",
+     "output": "4",
+     "note": "9 is at index 4"
+    },
+    {
+     "input": "nums = [-1, 0, 3, 5, 9, 12], target = 2",
+     "output": "-1",
+     "note": "2 is not in the list"
+    }
+   ],
+   "function": "search",
+   "signature": "def search(nums, target):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums",
+    "target"
+   ],
+   "starter": "def search(nums, target):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       -1,
+       0,
+       3,
+       5,
+       9,
+       12
+      ],
+      9
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       -1,
+       0,
+       3,
+       5,
+       9,
+       12
+      ],
+      2
+     ],
+     "expected": -1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       5
+      ],
+      5
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       5
+      ],
+      4
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -20,
+       -11,
+       17,
+       33,
+       35,
+       38
+      ],
+      -20
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       -15,
+       -11,
+       16,
+       31,
+       33,
+       39
+      ],
+      33
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       -11,
+       -9,
+       -5,
+       3,
+       8,
+       13,
+       22,
+       28
+      ],
+      -11
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       -3,
+       27,
+       28
+      ],
+      -3
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       18,
+       33
+      ],
+      28
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       34
+      ],
+      34
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       -16,
+       -13,
+       9,
+       14,
+       18,
+       39
+      ],
+      42
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -11,
+       -4,
+       -3,
+       8,
+       23,
+       25
+      ],
+      8
+     ],
+     "expected": 3
+    }
+   ],
+   "hints": [
+    "Look at the middle element and throw away the half that cannot contain the target.",
+    "Keep two bounds, lo and hi, and loop while lo <= hi."
+   ],
+   "beginner": {
+    "prompt": "Each step of binary search:",
+    "options": [
+     "Checks the first element",
+     "Doubles the search range",
+     "Scans left to right",
+     "Checks the middle and discards half the range"
+    ],
+    "answer": 3,
+    "explanation": "Halving the range each step gives O(log n)."
+   },
+   "intermediate": {
+    "template": "def search(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        @@1@@\n        if nums[mid] == target:\n            return mid\n        if nums[mid] < target:\n            @@2@@\n        else:\n            hi = mid - 1\n    return -1\n",
+    "blanks": [
+     {
+      "answer": "mid = (lo + hi) // 2"
+     },
+     {
+      "answer": "lo = mid + 1"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Binary Search",
+    "link": "https://leetcode.com/problems/binary-search",
+    "companies": 11,
+    "max_frequency": 62.0
+   }
+  },
+  {
+   "id": "search_rotated",
+   "world": 2,
+   "order": 2,
+   "title": "Search in Rotated Sorted Array",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Binary Search"
+   ],
+   "complexity": "O(log n) time, O(1) space",
+   "description": "A sorted list of distinct numbers was rotated at an unknown pivot (for example [0,1,2,4,5,6,7] became [4,5,6,7,0,1,2]). Return the index of `target`, or -1 if it is absent. Aim for O(log n).",
+   "constraints": [
+    "1 <= len(nums) <= 5000",
+    "Values are distinct"
+   ],
+   "examples": [
+    {
+     "input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 0",
+     "output": "4",
+     "note": "0 sits at index 4"
+    },
+    {
+     "input": "nums = [4, 5, 6, 7, 0, 1, 2], target = 3",
+     "output": "-1",
+     "note": ""
+    }
+   ],
+   "function": "searchRotated",
+   "signature": "def searchRotated(nums, target):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums",
+    "target"
+   ],
+   "starter": "def searchRotated(nums, target):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       4,
+       5,
+       6,
+       7,
+       0,
+       1,
+       2
+      ],
+      0
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       4,
+       5,
+       6,
+       7,
+       0,
+       1,
+       2
+      ],
+      3
+     ],
+     "expected": -1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ],
+      1
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       3,
+       1
+      ],
+      1
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       1,
+       3
+      ],
+      3
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       -3,
+       0,
+       1,
+       5,
+       20,
+       23,
+       -11,
+       -10
+      ],
+      25
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -16,
+       -10,
+       11,
+       12,
+       16
+      ],
+      -16
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       25,
+       33,
+       -12,
+       -4,
+       17
+      ],
+      4
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -14
+      ],
+      20
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       -19,
+       -11,
+       -10,
+       0
+      ],
+      -15
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       13,
+       16,
+       -14,
+       -10
+      ],
+      45
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       11,
+       18
+      ],
+      18
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       38,
+       -10,
+       -7,
+       -4,
+       7,
+       19,
+       25,
+       32
+      ],
+      -4
+     ],
+     "expected": 3
+    }
+   ],
+   "hints": [
+    "After computing mid, at least one half is still sorted.",
+    "Check whether the target lies inside the sorted half; if so go there, otherwise go to the other half."
+   ],
+   "beginner": {
+    "prompt": "In a rotated sorted array, after computing mid:",
+    "options": [
+     "Rotate the array back first",
+     "One half is always sorted; check if the target falls inside it",
+     "The left half is always sorted",
+     "O(log n) is impossible"
+    ],
+    "answer": 1,
+    "explanation": "Knowing which half is sorted lets you discard the other half safely."
+   },
+   "intermediate": {
+    "template": "def searchRotated(nums, target):\n    lo, hi = 0, len(nums) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if nums[mid] == target:\n            return mid\n        @@1@@\n            if nums[lo] <= target < nums[mid]:\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        else:\n            @@2@@\n                lo = mid + 1\n            else:\n                hi = mid - 1\n    return -1\n",
+    "blanks": [
+     {
+      "answer": "if nums[lo] <= nums[mid]:"
+     },
+     {
+      "answer": "if nums[mid] < target <= nums[hi]:"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Search in Rotated Sorted Array",
+    "link": "https://leetcode.com/problems/search-in-rotated-sorted-array",
+    "companies": 45,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "search_first_last",
+   "world": 2,
+   "order": 3,
+   "title": "First and Last Position",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Binary Search"
+   ],
+   "complexity": "O(log n) time, O(1) space",
+   "description": "`nums` is sorted in ascending order and may contain duplicates. Return [first, last], the first and last index of `target`, or [-1, -1] if it does not occur. Aim for O(log n).",
+   "constraints": [
+    "0 <= len(nums) <= 10^5"
+   ],
+   "examples": [
+    {
+     "input": "nums = [5, 7, 7, 8, 8, 10], target = 8",
+     "output": "[3, 4]",
+     "note": "8 occupies indexes 3 to 4"
+    },
+    {
+     "input": "nums = [5, 7, 7, 8, 8, 10], target = 6",
+     "output": "[-1, -1]",
+     "note": ""
+    }
+   ],
+   "function": "searchRange",
+   "signature": "def searchRange(nums, target):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums",
+    "target"
+   ],
+   "starter": "def searchRange(nums, target):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       5,
+       7,
+       7,
+       8,
+       8,
+       10
+      ],
+      8
+     ],
+     "expected": [
+      3,
+      4
+     ]
+    },
+    {
+     "args": [
+      [
+       5,
+       7,
+       7,
+       8,
+       8,
+       10
+      ],
+      6
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [],
+      0
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       2,
+       2
+      ],
+      2
+     ],
+     "expected": [
+      0,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      1
+     ],
+     "expected": [
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       0,
+       1,
+       1,
+       1,
+       3,
+       6,
+       7
+      ],
+      7
+     ],
+     "expected": [
+      8,
+      8
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       1,
+       2,
+       6,
+       7
+      ],
+      2
+     ],
+     "expected": [
+      2,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       1,
+       1,
+       2,
+       3,
+       4,
+       4,
+       5,
+       5,
+       6,
+       6
+      ],
+      2
+     ],
+     "expected": [
+      3,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       3,
+       7
+      ],
+      2
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       3,
+       3
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       5,
+       6,
+       7
+      ],
+      0
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       4,
+       4,
+       5,
+       6
+      ],
+      2
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       0,
+       2,
+       2,
+       2,
+       3,
+       3,
+       4,
+       4,
+       4,
+       5,
+       7
+      ],
+      4
+     ],
+     "expected": [
+      7,
+      9
+     ]
+    }
+   ],
+   "hints": [
+    "A 'lower bound' search finds the first index whose value is >= t.",
+    "The last index of target is lower_bound(target + 1) - 1."
+   ],
+   "beginner": {
+    "prompt": "To find the last position of target with binary search you can:",
+    "options": [
+     "Run the same search twice and compare",
+     "Scan right from the first position (always O(log n))",
+     "Find the lower bound of target + 1 and subtract one",
+     "Search with a linear loop from the right"
+    ],
+    "answer": 2,
+    "explanation": "Two lower-bound searches give both ends in O(log n)."
+   },
+   "intermediate": {
+    "template": "def searchRange(nums, target):\n    def lower(t):\n        lo, hi = 0, len(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            @@1@@\n                lo = mid + 1\n            else:\n                hi = mid\n        return lo\n    first = lower(target)\n    if first == len(nums) or nums[first] != target:\n        return [-1, -1]\n    return [first, @@2@@]\n",
+    "blanks": [
+     {
+      "answer": "if nums[mid] < t:"
+     },
+     {
+      "answer": "lower(target + 1) - 1"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Find First and Last Position of Element in Sorted Array",
+    "link": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array",
+    "companies": 30,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "search_matrix",
+   "world": 2,
+   "order": 4,
+   "title": "Search a 2D Matrix",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Binary Search",
+    "Matrix"
+   ],
+   "complexity": "O(log(rows * cols)) time, O(1) space",
+   "description": "Each row of `matrix` is sorted left to right, and every row starts with a number larger than the last number of the previous row. Return True if `target` appears in the matrix, otherwise False.",
+   "constraints": [
+    "1 <= rows, cols <= 100"
+   ],
+   "examples": [
+    {
+     "input": "matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], target = 3",
+     "output": "True",
+     "note": "3 is in the first row"
+    },
+    {
+     "input": "matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], target = 13",
+     "output": "False",
+     "note": ""
+    }
+   ],
+   "function": "searchMatrix",
+   "signature": "def searchMatrix(matrix, target):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "matrix",
+    "target"
+   ],
+   "starter": "def searchMatrix(matrix, target):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        1,
+        3,
+        5,
+        7
+       ],
+       [
+        10,
+        11,
+        16,
+        20
+       ],
+       [
+        23,
+        30,
+        34,
+        60
+       ]
+      ],
+      3
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        1,
+        3,
+        5,
+        7
+       ],
+       [
+        10,
+        11,
+        16,
+        20
+       ],
+       [
+        23,
+        30,
+        34,
+        60
+       ]
+      ],
+      13
+     ],
+     "expected": false
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       [
+        1
+       ]
+      ],
+      1
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ]
+      ],
+      2
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       [
+        -26
+       ],
+       [
+        34
+       ],
+       [
+        48
+       ]
+      ],
+      34
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        -25,
+        -18,
+        -17,
+        -7
+       ],
+       [
+        -5,
+        14,
+        16,
+        22
+       ],
+       [
+        24,
+        29,
+        30,
+        32
+       ],
+       [
+        34,
+        47,
+        54,
+        58
+       ]
+      ],
+      -5
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        19
+       ],
+       [
+        53
+       ]
+      ],
+      19
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        -11,
+        -10,
+        -1,
+        5
+       ],
+       [
+        15,
+        18,
+        40,
+        56
+       ]
+      ],
+      63
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       [
+        -25,
+        -10,
+        -2,
+        -1
+       ],
+       [
+        6,
+        10,
+        12,
+        13
+       ],
+       [
+        15,
+        20,
+        22,
+        25
+       ],
+       [
+        34,
+        37,
+        46,
+        59
+       ]
+      ],
+      22
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        -25,
+        -21,
+        -14,
+        -8
+       ],
+       [
+        -3,
+        1,
+        8,
+        11
+       ],
+       [
+        22,
+        23,
+        31,
+        41
+       ],
+       [
+        43,
+        44,
+        53,
+        57
+       ]
+      ],
+      -30
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       [
+        -25,
+        -11,
+        -9,
+        -6
+       ],
+       [
+        -1,
+        1,
+        4,
+        8
+       ],
+       [
+        10,
+        18,
+        27,
+        47
+       ],
+       [
+        48,
+        50,
+        51,
+        53
+       ]
+      ],
+      47
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       [
+        -5,
+        8
+       ]
+      ],
+      56
+     ],
+     "expected": false
+    }
+   ],
+   "hints": [
+    "Read the matrix row by row: the values form one long sorted list.",
+    "Index mid maps to row mid // cols and column mid % cols."
+   ],
+   "beginner": {
+    "prompt": "Why can binary search treat the matrix as one list?",
+    "options": [
+     "Reading row by row gives one fully sorted sequence",
+     "The matrix is always square",
+     "It cannot be done in O(log n)",
+     "Columns are unordered so you must scan"
+    ],
+    "answer": 0,
+    "explanation": "Sorted rows plus ordered row boundaries mean the flattened order is sorted."
+   },
+   "intermediate": {
+    "template": "def searchMatrix(matrix, target):\n    rows, cols = len(matrix), len(matrix[0])\n    lo, hi = 0, rows * cols - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        value = @@1@@\n        if value == target:\n            return True\n        if value < target:\n            @@2@@\n        else:\n            hi = mid - 1\n    return False\n",
+    "blanks": [
+     {
+      "answer": "matrix[mid // cols][mid % cols]"
+     },
+     {
+      "answer": "lo = mid + 1"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Search a 2D Matrix",
+    "link": "https://leetcode.com/problems/search-a-2d-matrix",
+    "companies": 17,
+    "max_frequency": 88.0
+   }
+  },
+  {
+   "id": "search_peak",
+   "world": 2,
+   "order": 5,
+   "title": "Find Peak Element",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Binary Search"
+   ],
+   "complexity": "O(log n) time, O(1) space",
+   "description": "A peak is an element strictly greater than its neighbours (treat the space outside the list as negative infinity). Neighbouring values are never equal. Return the index of any peak. Aim for O(log n).",
+   "constraints": [
+    "1 <= len(nums) <= 1000",
+    "nums[i] != nums[i + 1]"
+   ],
+   "examples": [
+    {
+     "input": "nums = [1, 2, 3, 1]",
+     "output": "2",
+     "note": "Index 2 (value 3) is a peak - any valid peak is accepted"
+    },
+    {
+     "input": "nums = [1, 2, 1, 3, 5, 6, 4]",
+     "output": "5",
+     "note": "Indexes 1 and 5 are both valid"
+    }
+   ],
+   "function": "findPeakElement",
+   "signature": "def findPeakElement(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "peak",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def findPeakElement(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       1
+      ]
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       1,
+       2,
+       1,
+       3,
+       5,
+       6,
+       4
+      ]
+     ],
+     "expected": 5
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       2,
+       1
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       -2,
+       9,
+       -9,
+       7,
+       2,
+       4,
+       3
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       -3,
+       -2,
+       -3,
+       1,
+       -1,
+       -8,
+       1,
+       3
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       1,
+       -5,
+       4
+      ]
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       -9,
+       -7,
+       -9,
+       1,
+       -1,
+       0,
+       -1
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       -4
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       -4,
+       0,
+       -9,
+       -8,
+       4,
+       -5,
+       -6
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       2
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       4,
+       1,
+       -8,
+       -3
+      ]
+     ],
+     "expected": 0
+    }
+   ],
+   "hints": [
+    "Compare nums[mid] with nums[mid + 1].",
+    "If the sequence is still rising, a peak must exist to the right."
+   ],
+   "beginner": {
+    "prompt": "If nums[mid] < nums[mid + 1] in the peak search, then:",
+    "options": [
+     "A peak must exist to the left of mid",
+     "There is no peak",
+     "mid is a peak",
+     "A peak must exist to the right of mid"
+    ],
+    "answer": 3,
+    "explanation": "Rising means the climb has to end somewhere on the right - possibly at the last element."
+   },
+   "intermediate": {
+    "template": "def findPeakElement(nums):\n    lo, hi = 0, len(nums) - 1\n    while lo < hi:\n        mid = (lo + hi) // 2\n        @@1@@\n            @@2@@\n        else:\n            hi = mid\n    return lo\n",
+    "blanks": [
+     {
+      "answer": "if nums[mid] < nums[mid + 1]:"
+     },
+     {
+      "answer": "lo = mid + 1"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Find Peak Element",
+    "link": "https://leetcode.com/problems/find-peak-element",
+    "companies": 29,
+    "max_frequency": 89.2
+   }
+  },
+  {
+   "id": "ll_reverse",
+   "world": 3,
+   "order": 1,
+   "title": "Reverse Linked List",
+   "difficulty": "easy",
+   "topics": [
+    "Linked List",
+    "Recursion"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "Reverse a singly linked list and return the new head. Each node has `.val` and `.next` (the `ListNode` class is provided).",
+   "constraints": [
+    "0 <= number of nodes <= 5000"
+   ],
+   "examples": [
+    {
+     "input": "head = [1, 2, 3, 4, 5]",
+     "output": "[5, 4, 3, 2, 1]",
+     "note": "Show nodes as a list of values"
+    },
+    {
+     "input": "head = [1, 2]",
+     "output": "[2, 1]",
+     "note": ""
+    }
+   ],
+   "function": "reverseList",
+   "signature": "def reverseList(head):",
+   "kind": "ll",
+   "options": {
+    "arg_types": [
+     "ll"
+    ],
+    "result": "ll"
+   },
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "head"
+   ],
+   "starter": "# ListNode(val, next) is provided.\ndef reverseList(head):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     ],
+     "expected": [
+      5,
+      4,
+      3,
+      2,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ]
+     ],
+     "expected": [
+      2,
+      1
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      []
+     ],
+     "expected": []
+    },
+    {
+     "args": [
+      [
+       7
+      ]
+     ],
+     "expected": [
+      7
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       1,
+       1,
+       -5,
+       9,
+       2,
+       -1
+      ]
+     ],
+     "expected": [
+      -1,
+      2,
+      9,
+      -5,
+      1,
+      1,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       -4,
+       -2,
+       5,
+       -1,
+       -6
+      ]
+     ],
+     "expected": [
+      -6,
+      -1,
+      5,
+      -2,
+      -4
+     ]
+    },
+    {
+     "args": [
+      [
+       9,
+       0,
+       6,
+       8,
+       -4,
+       -5,
+       5
+      ]
+     ],
+     "expected": [
+      5,
+      -5,
+      -4,
+      8,
+      6,
+      0,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -3,
+       -8,
+       8,
+       9,
+       -4,
+       -9,
+       7
+      ]
+     ],
+     "expected": [
+      7,
+      -9,
+      -4,
+      9,
+      8,
+      -8,
+      -3
+     ]
+    },
+    {
+     "args": [
+      [
+       -9,
+       5,
+       -9,
+       2,
+       5,
+       7
+      ]
+     ],
+     "expected": [
+      7,
+      5,
+      2,
+      -9,
+      5,
+      -9
+     ]
+    },
+    {
+     "args": [
+      [
+       -8,
+       -6,
+       2,
+       8
+      ]
+     ],
+     "expected": [
+      8,
+      2,
+      -6,
+      -8
+     ]
+    },
+    {
+     "args": [
+      [
+       -4,
+       -2,
+       5,
+       0,
+       -7
+      ]
+     ],
+     "expected": [
+      -7,
+      0,
+      5,
+      -2,
+      -4
+     ]
+    },
+    {
+     "args": [
+      [
+       0,
+       -4,
+       0
+      ]
+     ],
+     "expected": [
+      0,
+      -4,
+      0
+     ]
+    }
+   ],
+   "hints": [
+    "Walk the list once, flipping each node's next pointer.",
+    "Save `head.next` before you overwrite it."
+   ],
+   "beginner": {
+    "prompt": "Reversing a list in place needs which pointers?",
+    "options": [
+     "previous, current and a saved next",
+     "Two heads and a stack of values",
+     "A full copy of every node",
+     "Only head"
+    ],
+    "answer": 0,
+    "explanation": "Saving next first lets you flip the link without losing the rest of the list."
+   },
+   "intermediate": {
+    "template": "def reverseList(head):\n    prev = None\n    while head:\n        @@1@@\n        @@2@@\n        prev = head\n        head = nxt\n    return prev\n",
+    "blanks": [
+     {
+      "answer": "nxt = head.next"
+     },
+     {
+      "answer": "head.next = prev"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Reverse Linked List",
+    "link": "https://leetcode.com/problems/reverse-linked-list",
+    "companies": 33,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "ll_cycle",
+   "world": 3,
+   "order": 2,
+   "title": "Linked List Cycle",
+   "difficulty": "easy",
+   "topics": [
+    "Hash Table",
+    "Linked List",
+    "Two Pointers",
+    "Floyd's Cycle Finding Algorithm"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "Return True if following `.next` pointers from `head` eventually loops back to an earlier node. Tests describe the list as `values` plus `pos`, the index the tail connects back to (-1 means no cycle); your function only receives `head`.",
+   "constraints": [
+    "1 <= number of nodes <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "values = [3, 2, 0, -4], pos = 1",
+     "output": "True",
+     "note": "The tail links back to the node at index 1"
+    },
+    {
+     "input": "values = [1, 2], pos = -1",
+     "output": "False",
+     "note": ""
+    }
+   ],
+   "function": "hasCycle",
+   "signature": "def hasCycle(head):",
+   "kind": "ll_cycle",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "values",
+    "pos"
+   ],
+   "starter": "# ListNode(val, next) is provided.\ndef hasCycle(head):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       3,
+       2,
+       0,
+       -4
+      ],
+      1
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ],
+      -1
+     ],
+     "expected": false
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ],
+      -1
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      0
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       -9,
+       -4,
+       -2,
+       5,
+       -9,
+       7,
+       9
+      ],
+      0
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       1,
+       -2,
+       3
+      ],
+      1
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       -7
+      ],
+      -1
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       -1,
+       4,
+       5,
+       8,
+       6,
+       -3,
+       6
+      ],
+      0
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       -3,
+       -3,
+       4
+      ],
+      -1
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      [
+       -3,
+       -9,
+       1,
+       0,
+       -3,
+       9,
+       -3
+      ],
+      5
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       5,
+       -7
+      ],
+      1
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      [
+       -1,
+       -3,
+       -3,
+       -8,
+       7
+      ],
+      -1
+     ],
+     "expected": false
+    }
+   ],
+   "hints": [
+    "A set of visited nodes works, but uses O(n) memory.",
+    "Move one pointer 1 step and another 2 steps; they meet inside a cycle."
+   ],
+   "beginner": {
+    "prompt": "Floyd's cycle detection uses:",
+    "options": [
+     "Two pointers moving at the same speed",
+     "A counter of nodes",
+     "A slow pointer (1 step) and a fast pointer (2 steps) that meet if there is a cycle",
+     "A sorted copy of the list"
+    ],
+    "answer": 2,
+    "explanation": "The fast pointer laps the slow one inside a cycle, so they must meet."
+   },
+   "intermediate": {
+    "template": "def hasCycle(head):\n    slow = fast = head\n    while fast and fast.next:\n        slow = slow.next\n        @@1@@\n        @@2@@\n            return True\n    return False\n",
+    "blanks": [
+     {
+      "answer": "fast = fast.next.next"
+     },
+     {
+      "answer": "if slow is fast:"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Linked List Cycle",
+    "link": "https://leetcode.com/problems/linked-list-cycle",
+    "companies": 23,
+    "max_frequency": 96.9
+   }
+  },
+  {
+   "id": "ll_merge_sorted",
+   "world": 3,
+   "order": 3,
+   "title": "Merge Two Sorted Lists",
+   "difficulty": "easy",
+   "topics": [
+    "Linked List",
+    "Recursion"
+   ],
+   "complexity": "O(n + m) time, O(1) space",
+   "description": "Merge two sorted linked lists into one sorted list by splicing their nodes together. Return the head of the merged list.",
+   "constraints": [
+    "0 <= nodes in each list <= 50"
+   ],
+   "examples": [
+    {
+     "input": "l1 = [1, 2, 4], l2 = [1, 3, 4]",
+     "output": "[1, 1, 2, 3, 4, 4]",
+     "note": "Nodes from both lists interleave"
+    },
+    {
+     "input": "l1 = [], l2 = [0]",
+     "output": "[0]",
+     "note": ""
+    }
+   ],
+   "function": "mergeTwoLists",
+   "signature": "def mergeTwoLists(l1, l2):",
+   "kind": "ll",
+   "options": {
+    "arg_types": [
+     "ll",
+     "ll"
+    ],
+    "result": "ll"
+   },
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "l1",
+    "l2"
+   ],
+   "starter": "# ListNode(val, next) is provided.\ndef mergeTwoLists(l1, l2):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       4
+      ],
+      [
+       1,
+       3,
+       4
+      ]
+     ],
+     "expected": [
+      1,
+      1,
+      2,
+      3,
+      4,
+      4
+     ]
+    },
+    {
+     "args": [
+      [],
+      [
+       0
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [],
+      []
+     ],
+     "expected": []
+    },
+    {
+     "args": [
+      [
+       5
+      ],
+      []
+     ],
+     "expected": [
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       5,
+       9
+      ],
+      [
+       -9
+      ]
+     ],
+     "expected": [
+      -9,
+      5,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -7,
+       1,
+       3,
+       3,
+       9
+      ],
+      []
+     ],
+     "expected": [
+      -7,
+      1,
+      3,
+      3,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -8,
+       -3,
+       1,
+       1,
+       9
+      ],
+      [
+       -4,
+       -2,
+       -2,
+       8
+      ]
+     ],
+     "expected": [
+      -8,
+      -4,
+      -3,
+      -2,
+      -2,
+      1,
+      1,
+      8,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -7,
+       2
+      ],
+      [
+       -5,
+       8,
+       9
+      ]
+     ],
+     "expected": [
+      -7,
+      -5,
+      2,
+      8,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -3
+      ],
+      [
+       -3,
+       3,
+       9
+      ]
+     ],
+     "expected": [
+      -3,
+      -3,
+      3,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       -3,
+       -2,
+       0,
+       3,
+       7,
+       8
+      ],
+      []
+     ],
+     "expected": [
+      -3,
+      -2,
+      0,
+      3,
+      7,
+      8
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       7
+      ],
+      [
+       -9,
+       -1,
+       5
+      ]
+     ],
+     "expected": [
+      -9,
+      -1,
+      3,
+      5,
+      7
+     ]
+    },
+    {
+     "args": [
+      [
+       -2
+      ],
+      [
+       -5,
+       2,
+       3,
+       5
+      ]
+     ],
+     "expected": [
+      -5,
+      -2,
+      2,
+      3,
+      5
+     ]
+    }
+   ],
+   "hints": [
+    "A dummy head node removes special cases.",
+    "Repeatedly attach the smaller front node, then attach whatever is left."
+   ],
+   "beginner": {
+    "prompt": "At each step of merging, you:",
+    "options": [
+     "Attach the smaller head node and advance that list",
+     "Sort all values with sorted()",
+     "Append list2 after list1",
+     "Reverse both lists"
+    ],
+    "answer": 0,
+    "explanation": "Comparing the two fronts keeps the output sorted in one pass."
+   },
+   "intermediate": {
+    "template": "def mergeTwoLists(l1, l2):\n    dummy = tail = ListNode()\n    while l1 and l2:\n        @@1@@\n            tail.next = l1\n            l1 = l1.next\n        else:\n            tail.next = l2\n            l2 = l2.next\n        tail = tail.next\n    @@2@@\n    return dummy.next\n",
+    "blanks": [
+     {
+      "answer": "if l1.val <= l2.val:"
+     },
+     {
+      "answer": "tail.next = l1 or l2"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Merge Two Sorted Lists",
+    "link": "https://leetcode.com/problems/merge-two-sorted-lists",
+    "companies": 32,
+    "max_frequency": 87.4
+   }
+  },
+  {
+   "id": "ll_remove_nth",
+   "world": 3,
+   "order": 4,
+   "title": "Remove Nth Node From End",
+   "difficulty": "medium",
+   "topics": [
+    "Linked List",
+    "Two Pointers"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "Remove the n-th node counted from the END of the list and return the head. Try to do it in a single pass.",
+   "constraints": [
+    "1 <= number of nodes <= 30",
+    "1 <= n <= number of nodes"
+   ],
+   "examples": [
+    {
+     "input": "head = [1, 2, 3, 4, 5], n = 2",
+     "output": "[1, 2, 3, 5]",
+     "note": "Node 4 is second from the end"
+    },
+    {
+     "input": "head = [1], n = 1",
+     "output": "[]",
+     "note": ""
+    }
+   ],
+   "function": "removeNthFromEnd",
+   "signature": "def removeNthFromEnd(head, n):",
+   "kind": "ll",
+   "options": {
+    "arg_types": [
+     "ll",
+     "val"
+    ],
+    "result": "ll"
+   },
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "head",
+    "n"
+   ],
+   "starter": "# ListNode(val, next) is provided.\ndef removeNthFromEnd(head, n):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      2
+     ],
+     "expected": [
+      1,
+      2,
+      3,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      1
+     ],
+     "expected": []
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1,
+       2
+      ],
+      2
+     ],
+     "expected": [
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       2
+      ],
+      1
+     ],
+     "expected": [
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       -7,
+       4,
+       -8,
+       -6
+      ],
+      1
+     ],
+     "expected": [
+      -7,
+      4,
+      -8
+     ]
+    },
+    {
+     "args": [
+      [
+       -9,
+       -4,
+       -9,
+       5,
+       -8,
+       7,
+       5
+      ],
+      4
+     ],
+     "expected": [
+      -9,
+      -4,
+      -9,
+      -8,
+      7,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       -5,
+       -8,
+       -1
+      ],
+      3
+     ],
+     "expected": [
+      -8,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       -9,
+       -7,
+       -1,
+       0,
+       2
+      ],
+      5
+     ],
+     "expected": [
+      -7,
+      -1,
+      0,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       9,
+       -8,
+       -9
+      ],
+      3
+     ],
+     "expected": [
+      -8,
+      -9
+     ]
+    },
+    {
+     "args": [
+      [
+       -1,
+       -8,
+       1,
+       2,
+       -1,
+       8,
+       3,
+       -8
+      ],
+      1
+     ],
+     "expected": [
+      -1,
+      -8,
+      1,
+      2,
+      -1,
+      8,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       -7,
+       7,
+       2,
+       -8,
+       -8,
+       -9,
+       5
+      ],
+      4
+     ],
+     "expected": [
+      -7,
+      7,
+      2,
+      -8,
+      -9,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       8
+      ],
+      1
+     ],
+     "expected": [
+      3
+     ]
+    }
+   ],
+   "hints": [
+    "Let a 'lead' pointer get n steps ahead.",
+    "Move both pointers until the lead reaches the last node; the follower is just before the target."
+   ],
+   "beginner": {
+    "prompt": "The one-pass trick for 'n-th from the end':",
+    "options": [
+     "Use recursion only",
+     "Measure the length in a separate pass only",
+     "Reverse the list twice",
+     "Advance a lead pointer n steps, then move both until the lead reaches the end"
+    ],
+    "answer": 3,
+    "explanation": "The gap between two pointers equals n, so the follower lands right before the node to delete."
+   },
+   "intermediate": {
+    "template": "def removeNthFromEnd(head, n):\n    dummy = ListNode(0, head)\n    lead = lag = dummy\n    for _ in range(n):\n        lead = lead.next\n    @@1@@\n        lead = lead.next\n        lag = lag.next\n    @@2@@\n    return dummy.next\n",
+    "blanks": [
+     {
+      "answer": "while lead.next:"
+     },
+     {
+      "answer": "lag.next = lag.next.next"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Remove Nth Node From End of List",
+    "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list",
+    "companies": 16,
+    "max_frequency": 75.4
+   }
+  },
+  {
+   "id": "ll_intersection",
+   "world": 3,
+   "order": 5,
+   "title": "Intersection of Two Linked Lists",
+   "difficulty": "easy",
+   "topics": [
+    "Hash Table",
+    "Linked List",
+    "Two Pointers"
+   ],
+   "complexity": "O(n + m) time, O(1) space",
+   "description": "Two linked lists may end in the very same nodes (the same objects, not just equal values). Return the first shared node, or None if they never meet. Tests give each list's own nodes plus the shared tail.",
+   "constraints": [
+    "Lists are short (0-8 nodes)",
+    "Do not change the lists"
+   ],
+   "examples": [
+    {
+     "input": "listA = [4, 1], listB = [5, 6, 1], shared = [8, 4, 5]",
+     "output": "8",
+     "note": "Both lists end with the same nodes 8 -> 4 -> 5"
+    },
+    {
+     "input": "listA = [2, 6, 4], listB = [1, 5], shared = []",
+     "output": "None",
+     "note": "No shared tail"
+    }
+   ],
+   "function": "getIntersectionNode",
+   "signature": "def getIntersectionNode(headA, headB):",
+   "kind": "ll_intersect",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "listA",
+    "listB",
+    "shared"
+   ],
+   "starter": "# ListNode(val, next) is provided.\ndef getIntersectionNode(headA, headB):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       4,
+       1
+      ],
+      [
+       5,
+       6,
+       1
+      ],
+      [
+       8,
+       4,
+       5
+      ]
+     ],
+     "expected": 8
+    },
+    {
+     "args": [
+      [
+       2,
+       6,
+       4
+      ],
+      [
+       1,
+       5
+      ],
+      []
+     ],
+     "expected": null
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [],
+      [],
+      []
+     ],
+     "expected": null
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      [
+       1
+      ],
+      []
+     ],
+     "expected": null
+    },
+    {
+     "args": [
+      [],
+      [],
+      [
+       3
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [],
+      [
+       4,
+       3
+      ],
+      [
+       3,
+       7,
+       7
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       4,
+       7,
+       8,
+       3
+      ],
+      [
+       5
+      ],
+      [
+       6,
+       6,
+       4
+      ]
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       9,
+       3,
+       7
+      ],
+      [
+       4,
+       4,
+       9,
+       4
+      ],
+      []
+     ],
+     "expected": null
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      [],
+      [
+       7,
+       3,
+       9,
+       6
+      ]
+     ],
+     "expected": 7
+    },
+    {
+     "args": [
+      [
+       1,
+       7
+      ],
+      [
+       1
+      ],
+      [
+       3,
+       8,
+       8,
+       4
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       8,
+       4,
+       4
+      ],
+      [
+       8,
+       4,
+       6,
+       8
+      ],
+      [
+       3,
+       9
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       4,
+       3,
+       1
+      ],
+      [
+       8
+      ],
+      []
+     ],
+     "expected": null
+    },
+    {
+     "args": [
+      [
+       5,
+       7
+      ],
+      [
+       6
+      ],
+      [
+       7
+      ]
+     ],
+     "expected": 7
+    }
+   ],
+   "hints": [
+    "The lists have different lengths before the shared part.",
+    "Walk pointer a through A then B, and pointer b through B then A - they travel equal distances."
+   ],
+   "beginner": {
+    "prompt": "Why does the 'switch lists at the end' trick work?",
+    "options": [
+     "The lists are sorted",
+     "Both pointers travel lenA + lenB nodes, so they meet at the shared node (or both reach None)",
+     "The values are equal",
+     "One list is secretly reversed"
+    ],
+    "answer": 1,
+    "explanation": "Equal total distance cancels out the difference in the unshared lengths."
+   },
+   "intermediate": {
+    "template": "def getIntersectionNode(headA, headB):\n    a, b = headA, headB\n    @@1@@\n        @@2@@\n        b = b.next if b else headA\n    return a\n",
+    "blanks": [
+     {
+      "answer": "while a is not b:"
+     },
+     {
+      "answer": "a = a.next if a else headB"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Intersection of Two Linked Lists",
+    "link": "https://leetcode.com/problems/intersection-of-two-linked-lists",
+    "companies": 12,
+    "max_frequency": 74.8
+   }
+  },
+  {
+   "id": "stack_valid_parentheses",
+   "world": 4,
+   "order": 1,
+   "title": "Valid Parentheses",
+   "difficulty": "easy",
+   "topics": [
+    "String",
+    "Stack",
+    "Bracket Sequences"
+   ],
+   "complexity": "O(n) time, O(n) space",
+   "description": "`s` contains only the characters ()[]{}. Return True if every opening bracket is closed by the same type of bracket in the correct order.",
+   "constraints": [
+    "0 <= len(s) <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "s = '()[]{}'",
+     "output": "True",
+     "note": "Every bracket closes properly"
+    },
+    {
+     "input": "s = '(]'",
+     "output": "False",
+     "note": "']' does not match '('"
+    }
+   ],
+   "function": "isValid",
+   "signature": "def isValid(s):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "s"
+   ],
+   "starter": "def isValid(s):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      "()[]{}"
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      "(]"
+     ],
+     "expected": false
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      ""
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      "("
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      ")"
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      "([)]"
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      "[}([("
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      ")[{(["
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      "[{}]}({"
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      "]"
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      "({()}()){{}}[]"
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      "{()[]}"
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      "[][]()"
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      ")()[{]}("
+     ],
+     "expected": false
+    }
+   ],
+   "hints": [
+    "The most recent unmatched opener must be closed first.",
+    "Push openers; for a closer, pop and compare."
+   ],
+   "beginner": {
+    "prompt": "Which structure checks bracket order?",
+    "options": [
+     "A queue",
+     "A set",
+     "A stack of opening brackets",
+     "A counter per bracket type only"
+    ],
+    "answer": 2,
+    "explanation": "Last opened, first closed - exactly a stack."
+   },
+   "intermediate": {
+    "template": "def isValid(s):\n    pairs = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n    stack = []\n    for ch in s:\n        if ch in pairs:\n            @@1@@\n                return False\n        else:\n            stack.append(ch)\n    @@2@@\n",
+    "blanks": [
+     {
+      "answer": "if not stack or stack.pop() != pairs[ch]:"
+     },
+     {
+      "answer": "return not stack"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Valid Parentheses",
+    "link": "https://leetcode.com/problems/valid-parentheses",
+    "companies": 90,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "stack_min_stack",
+   "world": 4,
+   "order": 2,
+   "title": "Min Stack",
+   "difficulty": "medium",
+   "topics": [
+    "Stack",
+    "Design"
+   ],
+   "complexity": "O(1) per operation",
+   "description": "Design a stack that supports push, pop, top and getMin (the smallest element currently stored), all in O(1) time. The tests call your methods in order; the list shows what each call returns (null means it returns nothing useful).",
+   "constraints": [
+    "pop, top and getMin are only called on a non-empty stack"
+   ],
+   "examples": [
+    {
+     "input": "operations = ['MinStack', 'push', 'push', 'push', 'getMin', 'pop', 'top', 'getMin'], arguments = [[], [-2], [0], [-3], [], [], [], []]",
+     "output": "[None, None, None, None, -3, None, 0, -2]",
+     "note": "After popping -3 the minimum is -2 again"
+    },
+    {
+     "input": "operations = ['MinStack', 'push', 'push', 'getMin', 'push', 'getMin'], arguments = [[], [4], [2], [], [2], []]",
+     "output": "[None, None, None, 2, None, 2]",
+     "note": ""
+    }
+   ],
+   "function": "MinStack",
+   "signature": "class MinStack:",
+   "kind": "design",
+   "options": {},
+   "class_name": "MinStack",
+   "compare": "exact",
+   "arg_names": [
+    "operations",
+    "arguments"
+   ],
+   "starter": "class MinStack:\n    def __init__(self):\n        pass\n\n    def push(self, val):\n        pass\n\n    def pop(self):\n        pass\n\n    def top(self):\n        pass\n\n    def getMin(self):\n        pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "push",
+       "getMin",
+       "pop",
+       "top",
+       "getMin"
+      ],
+      [
+       [],
+       [
+        -2
+       ],
+       [
+        0
+       ],
+       [
+        -3
+       ],
+       [],
+       [],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      null,
+      -3,
+      null,
+      0,
+      -2
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "getMin",
+       "push",
+       "getMin"
+      ],
+      [
+       [],
+       [
+        4
+       ],
+       [
+        2
+       ],
+       [],
+       [
+        2
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      2,
+      null,
+      2
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "pop",
+       "push",
+       "top",
+       "top",
+       "getMin",
+       "top",
+       "getMin",
+       "top",
+       "pop",
+       "push",
+       "pop"
+      ],
+      [
+       [],
+       [
+        4
+       ],
+       [],
+       [
+        0
+       ],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [
+        -5
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      null,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "getMin",
+       "push",
+       "top",
+       "top",
+       "pop",
+       "pop",
+       "pop"
+      ],
+      [
+       [],
+       [
+        -4
+       ],
+       [
+        -2
+       ],
+       [],
+       [
+        3
+       ],
+       [],
+       [],
+       [],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      -4,
+      null,
+      3,
+      3,
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "getMin",
+       "push",
+       "getMin",
+       "top",
+       "push",
+       "top",
+       "top"
+      ],
+      [
+       [],
+       [
+        4
+       ],
+       [
+        -1
+       ],
+       [],
+       [
+        -4
+       ],
+       [],
+       [],
+       [
+        -2
+       ],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      -1,
+      null,
+      -4,
+      -4,
+      null,
+      -2,
+      -2
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "getMin",
+       "push",
+       "push",
+       "push",
+       "pop",
+       "getMin",
+       "push",
+       "getMin",
+       "push"
+      ],
+      [
+       [],
+       [
+        -4
+       ],
+       [
+        -5
+       ],
+       [],
+       [
+        0
+       ],
+       [
+        -3
+       ],
+       [
+        4
+       ],
+       [],
+       [],
+       [
+        -5
+       ],
+       [],
+       [
+        -5
+       ]
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      -5,
+      null,
+      null,
+      null,
+      null,
+      -5,
+      null,
+      -5,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "top",
+       "top",
+       "getMin",
+       "push",
+       "push",
+       "push",
+       "top",
+       "getMin"
+      ],
+      [
+       [],
+       [
+        5
+       ],
+       [],
+       [],
+       [],
+       [
+        2
+       ],
+       [
+        -3
+       ],
+       [
+        0
+       ],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      5,
+      5,
+      5,
+      null,
+      null,
+      null,
+      0,
+      -3
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "top",
+       "pop",
+       "push",
+       "getMin"
+      ],
+      [
+       [],
+       [
+        -1
+       ],
+       [],
+       [],
+       [
+        -1
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      -1,
+      null,
+      null,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "push",
+       "getMin",
+       "top",
+       "push",
+       "pop",
+       "getMin",
+       "push",
+       "top",
+       "push"
+      ],
+      [
+       [],
+       [
+        1
+       ],
+       [
+        3
+       ],
+       [
+        4
+       ],
+       [],
+       [],
+       [
+        1
+       ],
+       [],
+       [],
+       [
+        -3
+       ],
+       [],
+       [
+        5
+       ]
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      null,
+      1,
+      4,
+      null,
+      null,
+      1,
+      null,
+      -3,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MinStack",
+       "push",
+       "push",
+       "pop",
+       "push",
+       "getMin",
+       "getMin",
+       "pop",
+       "getMin",
+       "pop",
+       "push",
+       "pop"
+      ],
+      [
+       [],
+       [
+        -2
+       ],
+       [
+        -4
+       ],
+       [],
+       [
+        2
+       ],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [
+        -1
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      -2,
+      -2,
+      null,
+      -2,
+      null,
+      null,
+      null
+     ]
+    }
+   ],
+   "hints": [
+    "Scanning the stack for the minimum is O(n).",
+    "Remember the minimum at every depth, e.g. with a second stack that moves together with the first."
+   ],
+   "beginner": {
+    "prompt": "How can getMin be O(1)?",
+    "options": [
+     "Scan the stack when asked",
+     "Keep one variable that is never updated",
+     "Keep a second stack that stores the minimum at each depth",
+     "Re-sort the stack on every push"
+    ],
+    "answer": 2,
+    "explanation": "Each push records the min so far; pop removes both entries so the previous min returns."
+   },
+   "intermediate": {
+    "template": "class MinStack:\n    def __init__(self):\n        self.stack = []\n        self.mins = []\n\n    def push(self, val):\n        self.stack.append(val)\n        self.mins.append(@@1@@)\n\n    def pop(self):\n        self.stack.pop()\n        self.mins.pop()\n\n    def top(self):\n        return self.stack[-1]\n\n    def getMin(self):\n        @@2@@\n",
+    "blanks": [
+     {
+      "answer": "val if not self.mins else min(val, self.mins[-1])"
+     },
+     {
+      "answer": "return self.mins[-1]"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Min Stack",
+    "link": "https://leetcode.com/problems/min-stack",
+    "companies": 36,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "stack_next_greater",
+   "world": 4,
+   "order": 3,
+   "title": "Next Greater Element",
+   "difficulty": "easy",
+   "topics": [
+    "Array",
+    "Hash Table",
+    "Stack",
+    "Monotonic Stack"
+   ],
+   "complexity": "O(n + m) time, O(m) space",
+   "description": "`nums1` is a subset of `nums2` and all values are distinct. For each x in `nums1`, find x inside `nums2` and return the first larger value to its right, or -1 if there is none.",
+   "constraints": [
+    "1 <= len(nums1) <= len(nums2) <= 1000"
+   ],
+   "examples": [
+    {
+     "input": "nums1 = [4, 1, 2], nums2 = [1, 3, 4, 2]",
+     "output": "[-1, 3, -1]",
+     "note": "4 has nothing greater to its right"
+    },
+    {
+     "input": "nums1 = [2, 4], nums2 = [1, 2, 3, 4]",
+     "output": "[3, -1]",
+     "note": ""
+    }
+   ],
+   "function": "nextGreaterElement",
+   "signature": "def nextGreaterElement(nums1, nums2):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums1",
+    "nums2"
+   ],
+   "starter": "def nextGreaterElement(nums1, nums2):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       4,
+       1,
+       2
+      ],
+      [
+       1,
+       3,
+       4,
+       2
+      ]
+     ],
+     "expected": [
+      -1,
+      3,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       2,
+       4
+      ],
+      [
+       1,
+       2,
+       3,
+       4
+      ]
+     ],
+     "expected": [
+      3,
+      -1
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ],
+      [
+       1
+      ]
+     ],
+     "expected": [
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       1,
+       6
+      ],
+      [
+       6,
+       17,
+       15,
+       19,
+       5,
+       11,
+       1
+      ]
+     ],
+     "expected": [
+      -1,
+      17
+     ]
+    },
+    {
+     "args": [
+      [
+       11
+      ],
+      [
+       15,
+       11
+      ]
+     ],
+     "expected": [
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       6,
+       11
+      ],
+      [
+       6,
+       11,
+       2
+      ]
+     ],
+     "expected": [
+      11,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       7,
+       14,
+       2,
+       6,
+       16,
+       3,
+       17
+      ],
+      [
+       14,
+       0,
+       6,
+       16,
+       2,
+       7,
+       17,
+       3
+      ]
+     ],
+     "expected": [
+      17,
+      16,
+      7,
+      16,
+      17,
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       14,
+       12,
+       3,
+       8
+      ],
+      [
+       14,
+       3,
+       12,
+       4,
+       8,
+       18
+      ]
+     ],
+     "expected": [
+      18,
+      18,
+      12,
+      18
+     ]
+    },
+    {
+     "args": [
+      [
+       3,
+       17
+      ],
+      [
+       17,
+       3
+      ]
+     ],
+     "expected": [
+      -1,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       12,
+       4,
+       15
+      ],
+      [
+       4,
+       14,
+       12,
+       6,
+       16,
+       1,
+       15
+      ]
+     ],
+     "expected": [
+      16,
+      14,
+      -1
+     ]
+    },
+    {
+     "args": [
+      [
+       9,
+       11,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       11,
+       9,
+       2
+      ]
+     ],
+     "expected": [
+      -1,
+      -1,
+      11,
+      11
+     ]
+    }
+   ],
+   "hints": [
+    "Scanning right for every element is O(n^2).",
+    "Keep a stack of values still waiting for a bigger one; pop them when a larger value arrives."
+   ],
+   "beginner": {
+    "prompt": "This problem is solved with:",
+    "options": [
+     "A max-heap of everything",
+     "A monotonic stack of values waiting for a greater element",
+     "Binary search in nums1",
+     "Sorting nums2"
+    ],
+    "answer": 1,
+    "explanation": "A new larger value resolves every smaller waiting value on the stack."
+   },
+   "intermediate": {
+    "template": "def nextGreaterElement(nums1, nums2):\n    nxt = {}\n    stack = []\n    for x in nums2:\n        @@1@@\n            @@2@@\n        stack.append(x)\n    return [nxt.get(x, -1) for x in nums1]\n",
+    "blanks": [
+     {
+      "answer": "while stack and stack[-1] < x:"
+     },
+     {
+      "answer": "nxt[stack.pop()] = x"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Next Greater Element I",
+    "link": "https://leetcode.com/problems/next-greater-element-i",
+    "companies": 14,
+    "max_frequency": 82.3
+   }
+  },
+  {
+   "id": "stack_daily_temperatures",
+   "world": 4,
+   "order": 4,
+   "title": "Daily Temperatures",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+   ],
+   "complexity": "O(n) time, O(n) space",
+   "description": "`temperatures[i]` is day i's temperature. For each day return how many days you must wait for a warmer one, or 0 if none will come.",
+   "constraints": [
+    "1 <= len(temperatures) <= 10^5"
+   ],
+   "examples": [
+    {
+     "input": "temperatures = [73, 74, 75, 71, 69, 72, 76, 73]",
+     "output": "[1, 1, 4, 2, 1, 1, 0, 0]",
+     "note": "Day 0 waits 1 day for 74"
+    },
+    {
+     "input": "temperatures = [30, 40, 50, 60]",
+     "output": "[1, 1, 1, 0]",
+     "note": ""
+    }
+   ],
+   "function": "dailyTemperatures",
+   "signature": "def dailyTemperatures(temperatures):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "temperatures"
+   ],
+   "starter": "def dailyTemperatures(temperatures):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       73,
+       74,
+       75,
+       71,
+       69,
+       72,
+       76,
+       73
+      ]
+     ],
+     "expected": [
+      1,
+      1,
+      4,
+      2,
+      1,
+      1,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       30,
+       40,
+       50,
+       60
+      ]
+     ],
+     "expected": [
+      1,
+      1,
+      1,
+      0
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       50
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       60,
+       50,
+       40
+      ]
+     ],
+     "expected": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       48,
+       41,
+       61
+      ]
+     ],
+     "expected": [
+      2,
+      1,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       35
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       75,
+       63
+      ]
+     ],
+     "expected": [
+      0,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       55
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       79,
+       56,
+       46,
+       92,
+       35,
+       83,
+       58,
+       72
+      ]
+     ],
+     "expected": [
+      3,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       39,
+       46,
+       45,
+       58,
+       61,
+       75
+      ]
+     ],
+     "expected": [
+      1,
+      2,
+      1,
+      1,
+      1,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       38,
+       55,
+       66,
+       62,
+       80,
+       55,
+       62,
+       95
+      ]
+     ],
+     "expected": [
+      1,
+      1,
+      2,
+      1,
+      3,
+      1,
+      1,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       97
+      ]
+     ],
+     "expected": [
+      0
+     ]
+    }
+   ],
+   "hints": [
+    "Store indexes of days still waiting for a warmer day.",
+    "When today is warmer than the day on top of the stack, pop it and record the gap."
+   ],
+   "beginner": {
+    "prompt": "In the stack solution you push:",
+    "options": [
+     "The number of days waited",
+     "Temperatures sorted",
+     "Only the hottest day",
+     "Indexes of days still waiting for a warmer day"
+    ],
+    "answer": 3,
+    "explanation": "Indexes let you compute the distance when a warmer day finally arrives."
+   },
+   "intermediate": {
+    "template": "def dailyTemperatures(temperatures):\n    out = [0] * len(temperatures)\n    stack = []\n    for i, t in enumerate(temperatures):\n        @@1@@\n            j = stack.pop()\n            @@2@@\n        stack.append(i)\n    return out\n",
+    "blanks": [
+     {
+      "answer": "while stack and temperatures[stack[-1]] < t:"
+     },
+     {
+      "answer": "out[j] = i - j"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Daily Temperatures",
+    "link": "https://leetcode.com/problems/daily-temperatures",
+    "companies": 25,
+    "max_frequency": 87.9
+   }
+  },
+  {
+   "id": "stack_queue_using_stacks",
+   "world": 4,
+   "order": 5,
+   "title": "Implement Queue Using Stacks",
+   "difficulty": "easy",
+   "topics": [
+    "Stack",
+    "Design",
+    "Queue"
+   ],
+   "complexity": "Amortised O(1) per operation",
+   "description": "Build a first-in-first-out queue using only two stacks (Python lists used with append and pop at the end). Support push(x), pop() which removes and returns the front, peek() which returns the front, and empty().",
+   "constraints": [
+    "pop and peek are only called on a non-empty queue"
+   ],
+   "examples": [
+    {
+     "input": "operations = ['MyQueue', 'push', 'push', 'peek', 'pop', 'empty'], arguments = [[], [1], [2], [], [], []]",
+     "output": "[None, None, None, 1, 1, False]",
+     "note": "The first pushed value comes out first"
+    },
+    {
+     "input": "operations = ['MyQueue', 'empty', 'push', 'pop', 'empty'], arguments = [[], [], [5], [], []]",
+     "output": "[None, True, None, 5, True]",
+     "note": ""
+    }
+   ],
+   "function": "MyQueue",
+   "signature": "class MyQueue:",
+   "kind": "design",
+   "options": {},
+   "class_name": "MyQueue",
+   "compare": "exact",
+   "arg_names": [
+    "operations",
+    "arguments"
+   ],
+   "starter": "class MyQueue:\n    def __init__(self):\n        pass\n\n    def push(self, x):\n        pass\n\n    def pop(self):\n        pass\n\n    def peek(self):\n        pass\n\n    def empty(self):\n        pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       "MyQueue",
+       "push",
+       "push",
+       "peek",
+       "pop",
+       "empty"
+      ],
+      [
+       [],
+       [
+        1
+       ],
+       [
+        2
+       ],
+       [],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      1,
+      1,
+      false
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "push",
+       "pop",
+       "empty"
+      ],
+      [
+       [],
+       [],
+       [
+        5
+       ],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      null,
+      5,
+      true
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "empty",
+       "push",
+       "empty",
+       "peek",
+       "peek",
+       "pop",
+       "push",
+       "peek",
+       "peek",
+       "peek"
+      ],
+      [
+       [],
+       [],
+       [],
+       [
+        5
+       ],
+       [],
+       [],
+       [],
+       [],
+       [
+        8
+       ],
+       [],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      true,
+      null,
+      false,
+      5,
+      5,
+      5,
+      null,
+      8,
+      8,
+      8
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "empty",
+       "push",
+       "empty"
+      ],
+      [
+       [],
+       [],
+       [],
+       [
+        8
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      true,
+      null,
+      false
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "empty",
+       "push",
+       "peek",
+       "empty",
+       "empty"
+      ],
+      [
+       [],
+       [],
+       [],
+       [
+        4
+       ],
+       [],
+       [],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      true,
+      null,
+      4,
+      false,
+      false
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "push",
+       "pop",
+       "empty",
+       "empty",
+       "empty",
+       "empty",
+       "push",
+       "push"
+      ],
+      [
+       [],
+       [],
+       [
+        2
+       ],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [
+        2
+       ],
+       [
+        6
+       ]
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      null,
+      2,
+      true,
+      true,
+      true,
+      true,
+      null,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "push",
+       "pop",
+       "push",
+       "peek",
+       "push"
+      ],
+      [
+       [],
+       [
+        2
+       ],
+       [],
+       [
+        2
+       ],
+       [],
+       [
+        9
+       ]
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      2,
+      null,
+      2,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "push",
+       "push",
+       "empty",
+       "pop",
+       "push",
+       "push",
+       "pop"
+      ],
+      [
+       [],
+       [
+        7
+       ],
+       [
+        9
+       ],
+       [],
+       [],
+       [
+        6
+       ],
+       [
+        1
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      null,
+      false,
+      7,
+      null,
+      null,
+      9
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "empty",
+       "empty",
+       "push",
+       "push",
+       "peek",
+       "peek",
+       "pop",
+       "push",
+       "peek",
+       "empty",
+       "empty",
+       "push"
+      ],
+      [
+       [],
+       [],
+       [],
+       [
+        3
+       ],
+       [
+        5
+       ],
+       [],
+       [],
+       [],
+       [
+        2
+       ],
+       [],
+       [],
+       [],
+       [
+        6
+       ]
+      ]
+     ],
+     "expected": [
+      null,
+      true,
+      true,
+      null,
+      null,
+      3,
+      3,
+      3,
+      null,
+      5,
+      false,
+      false,
+      null
+     ]
+    },
+    {
+     "args": [
+      [
+       "MyQueue",
+       "push",
+       "peek",
+       "pop",
+       "push",
+       "peek",
+       "pop",
+       "empty",
+       "empty",
+       "empty",
+       "push",
+       "pop"
+      ],
+      [
+       [],
+       [
+        5
+       ],
+       [],
+       [],
+       [
+        5
+       ],
+       [],
+       [],
+       [],
+       [],
+       [],
+       [
+        3
+       ],
+       []
+      ]
+     ],
+     "expected": [
+      null,
+      null,
+      5,
+      5,
+      null,
+      5,
+      5,
+      true,
+      true,
+      true,
+      null,
+      3
+     ]
+    }
+   ],
+   "hints": [
+    "One stack receives new items; moving them to a second stack reverses their order.",
+    "Only refill the second stack when it is empty."
+   ],
+   "beginner": {
+    "prompt": "Moving items from the inbox stack to the outbox stack:",
+    "options": [
+     "Keeps LIFO order",
+     "Duplicates them",
+     "Reverses their order, producing FIFO behaviour",
+     "Sorts them"
+    ],
+    "answer": 2,
+    "explanation": "Reversal turns the newest-on-top order into oldest-on-top."
+   },
+   "intermediate": {
+    "template": "class MyQueue:\n    def __init__(self):\n        self.inbox = []\n        self.outbox = []\n\n    def push(self, x):\n        self.inbox.append(x)\n\n    def _shift(self):\n        if not self.outbox:\n            while self.inbox:\n                @@1@@\n\n    def pop(self):\n        self._shift()\n        return self.outbox.pop()\n\n    def peek(self):\n        self._shift()\n        return self.outbox[-1]\n\n    def empty(self):\n        @@2@@\n",
+    "blanks": [
+     {
+      "answer": "self.outbox.append(self.inbox.pop())"
+     },
+     {
+      "answer": "return not self.inbox and not self.outbox"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Implement Queue using Stacks",
+    "link": "https://leetcode.com/problems/implement-queue-using-stacks",
+    "companies": 12,
+    "max_frequency": 75.7
+   }
+  },
+  {
+   "id": "graph_bfs",
+   "world": 5,
+   "order": 1,
+   "title": "BFS Traversal",
+   "difficulty": "easy",
+   "topics": [
+    "Graph",
+    "Breadth-First Search"
+   ],
+   "complexity": "O(V + E) time, O(V) space",
+   "description": "`graph[i]` lists the neighbours of node i (nodes are numbered 0 to n-1). Return the nodes in the order a breadth-first search visits them from `start`, taking neighbours in the listed order and never visiting a node twice.",
+   "constraints": [
+    "1 <= n <= 1000"
+   ],
+   "examples": [
+    {
+     "input": "graph = [[1, 2], [3], [3], []], start = 0",
+     "output": "[0, 1, 2, 3]",
+     "note": "Level by level: 0, then 1 and 2, then 3"
+    },
+    {
+     "input": "graph = [[1], [0, 2], [1], []], start = 1",
+     "output": "[1, 0, 2]",
+     "note": ""
+    }
+   ],
+   "function": "bfsTraversal",
+   "signature": "def bfsTraversal(graph, start):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "graph",
+    "start"
+   ],
+   "starter": "def bfsTraversal(graph, start):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        1,
+        2
+       ],
+       [
+        3
+       ],
+       [
+        3
+       ],
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ],
+       [
+        0,
+        2
+       ],
+       [
+        1
+       ],
+       []
+      ],
+      1
+     ],
+     "expected": [
+      1,
+      0,
+      2
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        4
+       ],
+       [
+        3
+       ],
+       [
+        7
+       ],
+       [
+        1,
+        5
+       ],
+       [
+        7,
+        5,
+        0
+       ],
+       [
+        4,
+        3
+       ],
+       [],
+       [
+        2,
+        4
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      4,
+      7,
+      5,
+      2,
+      3,
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ],
+       [
+        0
+       ],
+       []
+      ],
+      2
+     ],
+     "expected": [
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        7
+       ],
+       [
+        4
+       ],
+       [
+        4
+       ],
+       [
+        6
+       ],
+       [
+        2,
+        6,
+        1
+       ],
+       [
+        6
+       ],
+       [
+        5,
+        4,
+        3
+       ],
+       [
+        0
+       ]
+      ],
+      1
+     ],
+     "expected": [
+      1,
+      4,
+      2,
+      6,
+      5,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        4
+       ],
+       [],
+       [],
+       [],
+       [
+        5,
+        0
+       ],
+       [
+        4
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      4,
+      5
+     ]
+    },
+    {
+     "args": [
+      [
+       [],
+       [],
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        5,
+        4,
+        7,
+        2,
+        1
+       ],
+       [
+        5,
+        0,
+        2
+       ],
+       [
+        0,
+        1
+       ],
+       [
+        4
+       ],
+       [
+        0,
+        3,
+        7
+       ],
+       [
+        1,
+        6,
+        0
+       ],
+       [
+        7,
+        5
+       ],
+       [
+        0,
+        6,
+        4
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      5,
+      4,
+      7,
+      2,
+      1,
+      6,
+      3
+     ]
+    },
+    {
+     "args": [
+      [
+       [],
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        6,
+        3,
+        7
+       ],
+       [],
+       [],
+       [
+        5,
+        7,
+        0
+       ],
+       [],
+       [
+        3
+       ],
+       [
+        7,
+        0
+       ],
+       [
+        0,
+        3,
+        6
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      6,
+      3,
+      7,
+      5
+     ]
+    }
+   ],
+   "hints": [
+    "Use a queue and a visited set.",
+    "Mark a node visited when you enqueue it so it is never queued twice."
+   ],
+   "beginner": {
+    "prompt": "Breadth-first search is driven by:",
+    "options": [
+     "Recursion only",
+     "A stack",
+     "A queue",
+     "A heap"
+    ],
+    "answer": 2,
+    "explanation": "FIFO order processes nodes level by level."
+   },
+   "intermediate": {
+    "template": "from collections import deque\n\n\ndef bfsTraversal(graph, start):\n    order = []\n    seen = {start}\n    queue = deque([start])\n    while queue:\n        @@1@@\n        order.append(node)\n        for nb in graph[node]:\n            @@2@@\n                seen.add(nb)\n                queue.append(nb)\n    return order\n",
+    "blanks": [
+     {
+      "answer": "node = queue.popleft()"
+     },
+     {
+      "answer": "if nb not in seen:"
+     }
+    ]
+   },
+   "source": {
+    "repo": null,
+    "title": null,
+    "link": null,
+    "companies": 0,
+    "max_frequency": 0
+   }
+  },
+  {
+   "id": "graph_dfs",
+   "world": 5,
+   "order": 2,
+   "title": "DFS Traversal",
+   "difficulty": "easy",
+   "topics": [
+    "Graph",
+    "Depth-First Search"
+   ],
+   "complexity": "O(V + E) time, O(V) space",
+   "description": "Same graph format as BFS. Return the order in which a recursive depth-first search visits the nodes from `start`, exploring neighbours in the listed order (go as deep as possible before backtracking).",
+   "constraints": [
+    "1 <= n <= 1000"
+   ],
+   "examples": [
+    {
+     "input": "graph = [[1, 2], [3], [3], []], start = 0",
+     "output": "[0, 1, 3, 2]",
+     "note": "Goes 0 -> 1 -> 3 before trying 2"
+    },
+    {
+     "input": "graph = [[2, 1], [0], [0]], start = 0",
+     "output": "[0, 2, 1]",
+     "note": ""
+    }
+   ],
+   "function": "dfsTraversal",
+   "signature": "def dfsTraversal(graph, start):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "graph",
+    "start"
+   ],
+   "starter": "def dfsTraversal(graph, start):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        1,
+        2
+       ],
+       [
+        3
+       ],
+       [
+        3
+       ],
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      1,
+      3,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        1
+       ],
+       [
+        0
+       ],
+       [
+        0
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      2,
+      1
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        6
+       ],
+       [
+        6
+       ],
+       [
+        6
+       ],
+       [
+        5
+       ],
+       [],
+       [
+        3,
+        6
+       ],
+       [
+        5,
+        1,
+        2,
+        0
+       ]
+      ],
+      3
+     ],
+     "expected": [
+      3,
+      5,
+      6,
+      1,
+      2,
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [],
+       [
+        3,
+        2
+       ],
+       [
+        1
+       ],
+       [
+        1
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        6,
+        2
+       ],
+       [
+        5
+       ],
+       [
+        0
+       ],
+       [
+        5
+       ],
+       [
+        6
+       ],
+       [
+        1,
+        3
+       ],
+       [
+        0,
+        4
+       ]
+      ],
+      6
+     ],
+     "expected": [
+      6,
+      0,
+      2,
+      4
+     ]
+    },
+    {
+     "args": [
+      [
+       [],
+       [],
+       [
+        3
+       ],
+       [
+        2
+       ]
+      ],
+      1
+     ],
+     "expected": [
+      1
+     ]
+    },
+    {
+     "args": [
+      [
+       [],
+       []
+      ],
+      0
+     ],
+     "expected": [
+      0
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        7,
+        2
+       ],
+       [
+        7,
+        4
+       ],
+       [
+        5,
+        0
+       ],
+       [
+        5,
+        4
+       ],
+       [
+        3,
+        1,
+        5
+       ],
+       [
+        4,
+        2,
+        3
+       ],
+       [],
+       [
+        1,
+        0
+       ]
+      ],
+      3
+     ],
+     "expected": [
+      3,
+      5,
+      4,
+      1,
+      7,
+      0,
+      2
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ],
+       [
+        0,
+        4
+       ],
+       [],
+       [],
+       [
+        1
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      1,
+      4
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        5,
+        6,
+        3
+       ],
+       [
+        5
+       ],
+       [],
+       [
+        0
+       ],
+       [
+        5
+       ],
+       [
+        1,
+        0,
+        4
+       ],
+       [
+        0
+       ]
+      ],
+      0
+     ],
+     "expected": [
+      0,
+      5,
+      1,
+      4,
+      6,
+      3
+     ]
+    }
+   ],
+   "hints": [
+    "Recursion naturally goes deep first.",
+    "If you use your own stack, push neighbours in reverse so the first neighbour is explored first."
+   ],
+   "beginner": {
+    "prompt": "Depth-first search naturally uses:",
+    "options": [
+     "Recursion (the call stack)",
+     "A heap",
+     "A sorted list",
+     "A queue"
+    ],
+    "answer": 0,
+    "explanation": "The call stack remembers where to backtrack to."
+   },
+   "intermediate": {
+    "template": "def dfsTraversal(graph, start):\n    order = []\n    seen = set()\n\n    def visit(node):\n        @@1@@\n        order.append(node)\n        for nb in graph[node]:\n            if nb not in seen:\n                @@2@@\n\n    visit(start)\n    return order\n",
+    "blanks": [
+     {
+      "answer": "seen.add(node)"
+     },
+     {
+      "answer": "visit(nb)"
+     }
+    ]
+   },
+   "source": {
+    "repo": null,
+    "title": null,
+    "link": null,
+    "companies": 0,
+    "max_frequency": 0
+   }
+  },
+  {
+   "id": "graph_islands",
+   "world": 5,
+   "order": 3,
+   "title": "Number of Islands",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix"
+   ],
+   "complexity": "O(rows * cols) time and space",
+   "description": "`grid` is a 2D list of 0 (water) and 1 (land). Count the islands: groups of land cells connected up, down, left or right.",
+   "constraints": [
+    "1 <= rows, cols <= 300"
+   ],
+   "examples": [
+    {
+     "input": "grid = [[1, 1, 0, 0], [1, 0, 0, 1], [0, 0, 1, 1]]",
+     "output": "2",
+     "note": "Two islands"
+    },
+    {
+     "input": "grid = [[1, 0, 1], [0, 1, 0], [1, 0, 1]]",
+     "output": "5",
+     "note": ""
+    }
+   ],
+   "function": "numIslands",
+   "signature": "def numIslands(grid):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "grid"
+   ],
+   "starter": "def numIslands(grid):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        1,
+        1,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        0,
+        1
+       ],
+       [
+        0,
+        0,
+        1,
+        1
+       ]
+      ]
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       [
+        1,
+        0,
+        1
+       ],
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        1,
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": 5
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       [
+        0
+       ]
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ]
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       [
+        1,
+        1,
+        1,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        0,
+        1,
+        1
+       ],
+       [
+        0,
+        0,
+        0,
+        1,
+        0
+       ],
+       [
+        1,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        1,
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        1,
+        0,
+        0
+       ],
+       [
+        1,
+        1,
+        0,
+        0,
+        1
+       ],
+       [
+        1,
+        0,
+        0,
+        0,
+        1
+       ],
+       [
+        1,
+        1,
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        1,
+        1,
+        0,
+        0
+       ],
+       [
+        1,
+        1,
+        0,
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+       ],
+       [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+       ],
+       [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+       ],
+       [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        0,
+        0,
+        1
+       ],
+       [
+        1,
+        0,
+        1,
+        0,
+        1
+       ],
+       [
+        1,
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        0,
+        1,
+        1
+       ],
+       [
+        1,
+        0,
+        1,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1,
+        0,
+        1
+       ],
+       [
+        1,
+        0,
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 1
+    }
+   ],
+   "hints": [
+    "Scan every cell; when you meet unvisited land, you found a new island.",
+    "Flood-fill (DFS or BFS) to mark all connected land as visited."
+   ],
+   "beginner": {
+    "prompt": "When you find unvisited land you should:",
+    "options": [
+     "Return immediately",
+     "Count every land cell",
+     "Count one island and flood-fill all connected land",
+     "Sort the grid"
+    ],
+    "answer": 2,
+    "explanation": "Flood-fill ensures each island is counted exactly once."
+   },
+   "intermediate": {
+    "template": "def numIslands(grid):\n    rows, cols = len(grid), len(grid[0])\n    seen = set()\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == 1 and (r, c) not in seen:\n                @@1@@\n                stack = [(r, c)]\n                seen.add((r, c))\n                while stack:\n                    x, y = stack.pop()\n                    for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):\n                        if @@2@@ and grid[nx][ny] == 1 and (nx, ny) not in seen:\n                            seen.add((nx, ny))\n                            stack.append((nx, ny))\n    return count\n",
+    "blanks": [
+     {
+      "answer": "count += 1"
+     },
+     {
+      "answer": "0 <= nx < rows and 0 <= ny < cols"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Number of Islands",
+    "link": "https://leetcode.com/problems/number-of-islands",
+    "companies": 81,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "graph_clone",
+   "world": 5,
+   "order": 4,
+   "title": "Clone Graph",
+   "difficulty": "medium",
+   "topics": [
+    "Hash Table",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory"
+   ],
+   "complexity": "O(V + E) time and space",
+   "description": "Given a node of a connected undirected graph (each `Node` has `.val` and `.neighbors`; the class is provided), return a deep copy of the whole graph. Tests describe the graph as an adjacency list where entry i lists the neighbours of node i + 1. Returning any original node fails.",
+   "constraints": [
+    "0 <= number of nodes <= 100",
+    "Node values are 1..n"
+   ],
+   "examples": [
+    {
+     "input": "adjacencyList = [[2, 4], [1, 3], [2, 4], [1, 3]]",
+     "output": "[[2, 4], [1, 3], [2, 4], [1, 3]]",
+     "note": "A square of four nodes"
+    },
+    {
+     "input": "adjacencyList = [[]]",
+     "output": "[[]]",
+     "note": ""
+    }
+   ],
+   "function": "cloneGraph",
+   "signature": "def cloneGraph(node):",
+   "kind": "graph_clone",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "adjacencyList"
+   ],
+   "starter": "# Node(val, neighbors) is provided.\ndef cloneGraph(node):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        2,
+        4
+       ],
+       [
+        1,
+        3
+       ],
+       [
+        2,
+        4
+       ],
+       [
+        1,
+        3
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       4
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       []
+      ]
+     ],
+     "expected": [
+      []
+     ]
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      []
+     ],
+     "expected": []
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        3
+       ],
+       [
+        1
+       ],
+       [
+        1,
+        4,
+        6
+       ],
+       [
+        3,
+        5
+       ],
+       [
+        4,
+        6
+       ],
+       [
+        3,
+        5
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       3
+      ],
+      [
+       1
+      ],
+      [
+       1,
+       4,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       3,
+       5
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        3
+       ],
+       [
+        1,
+        3
+       ],
+       [
+        1,
+        2
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       3
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       1,
+       2
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2
+       ],
+       [
+        1
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2
+      ],
+      [
+       1
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        3,
+        4
+       ],
+       [
+        1,
+        4,
+        5,
+        6
+       ],
+       [
+        1
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        6
+       ],
+       [
+        2,
+        5
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       3,
+       4
+      ],
+      [
+       1,
+       4,
+       5,
+       6
+      ],
+      [
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       5
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2
+       ],
+       [
+        1,
+        3
+       ],
+       [
+        2
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        4
+       ],
+       [
+        1,
+        3,
+        4,
+        5
+       ],
+       [
+        2
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       4
+      ],
+      [
+       1,
+       3,
+       4,
+       5
+      ],
+      [
+       2
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       2
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        3,
+        5
+       ],
+       [
+        1
+       ],
+       [
+        1,
+        4,
+        6
+       ],
+       [
+        3
+       ],
+       [
+        1
+       ],
+       [
+        3
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       3,
+       5
+      ],
+      [
+       1
+      ],
+      [
+       1,
+       4,
+       6
+      ],
+      [
+       3
+      ],
+      [
+       1
+      ],
+      [
+       3
+      ]
+     ]
+    },
+    {
+     "args": [
+      [
+       [
+        2,
+        3,
+        4
+       ],
+       [
+        1,
+        5,
+        6
+       ],
+       [
+        1,
+        5
+       ],
+       [
+        1
+       ],
+       [
+        2,
+        3
+       ],
+       [
+        2
+       ]
+      ]
+     ],
+     "expected": [
+      [
+       2,
+       3,
+       4
+      ],
+      [
+       1,
+       5,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       1
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2
+      ]
+     ]
+    }
+   ],
+   "hints": [
+    "Graphs can contain cycles, so remember which nodes you already copied.",
+    "A dictionary from original node to its copy does both jobs."
+   ],
+   "beginner": {
+    "prompt": "To clone a graph with cycles you need:",
+    "options": [
+     "A sorted list of values",
+     "Nothing special",
+     "A map from original node to its copy",
+     "To reuse the original nodes"
+    ],
+    "answer": 2,
+    "explanation": "The map prevents infinite loops and lets neighbours point to the same copy."
+   },
+   "intermediate": {
+    "template": "def cloneGraph(node):\n    if node is None:\n        return None\n    copies = {node: Node(node.val)}\n    stack = [node]\n    while stack:\n        cur = stack.pop()\n        for nb in cur.neighbors:\n            if nb not in copies:\n                @@1@@\n                stack.append(nb)\n            @@2@@\n    return copies[node]\n",
+    "blanks": [
+     {
+      "answer": "copies[nb] = Node(nb.val)"
+     },
+     {
+      "answer": "copies[cur].neighbors.append(copies[nb])"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Clone Graph",
+    "link": "https://leetcode.com/problems/clone-graph",
+    "companies": 18,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "graph_course_schedule",
+   "world": 5,
+   "order": 5,
+   "title": "Course Schedule",
+   "difficulty": "medium",
+   "topics": [
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort",
+    "Directed Acyclic Graph"
+   ],
+   "complexity": "O(V + E) time and space",
+   "description": "There are `numCourses` courses numbered 0 to n-1. Each pair [a, b] in `prerequisites` means you must take course b before course a. Return True if it is possible to finish every course.",
+   "constraints": [
+    "1 <= numCourses <= 2000"
+   ],
+   "examples": [
+    {
+     "input": "numCourses = 2, prerequisites = [[1, 0]]",
+     "output": "True",
+     "note": "Two courses depend on each other: impossible"
+    },
+    {
+     "input": "numCourses = 2, prerequisites = [[1, 0], [0, 1]]",
+     "output": "False",
+     "note": ""
+    }
+   ],
+   "function": "canFinish",
+   "signature": "def canFinish(numCourses, prerequisites):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "numCourses",
+    "prerequisites"
+   ],
+   "starter": "def canFinish(numCourses, prerequisites):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      2,
+      [
+       [
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      2,
+      [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": false
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      1,
+      []
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      3,
+      [
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        1
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      6,
+      [
+       [
+        4,
+        5
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        1,
+        5
+       ],
+       [
+        3,
+        4
+       ],
+       [
+        4,
+        3
+       ]
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      2,
+      [
+       [
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      2,
+      [
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      6,
+      [
+       [
+        1,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        4,
+        1
+       ],
+       [
+        0,
+        3
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      2,
+      [
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        1
+       ],
+       [
+        0,
+        1
+       ]
+      ]
+     ],
+     "expected": false
+    },
+    {
+     "args": [
+      5,
+      [
+       [
+        4,
+        1
+       ],
+       [
+        3,
+        1
+       ],
+       [
+        0,
+        2
+       ],
+       [
+        4,
+        0
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      6,
+      [
+       [
+        4,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        4,
+        3
+       ]
+      ]
+     ],
+     "expected": true
+    },
+    {
+     "args": [
+      5,
+      [
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        2
+       ],
+       [
+        2,
+        1
+       ],
+       [
+        4,
+        1
+       ],
+       [
+        3,
+        1
+       ]
+      ]
+     ],
+     "expected": false
+    }
+   ],
+   "hints": [
+    "This is asking whether the dependency graph has a cycle.",
+    "Repeatedly take courses with no remaining prerequisites (topological sort)."
+   ],
+   "beginner": {
+    "prompt": "Course Schedule asks whether the prerequisite graph:",
+    "options": [
+     "Has equal in- and out-degree",
+     "Has exactly one cycle",
+     "Has no cycle",
+     "Is a tree"
+    ],
+    "answer": 2,
+    "explanation": "A valid order exists exactly when the directed graph is acyclic."
+   },
+   "intermediate": {
+    "template": "def canFinish(numCourses, prerequisites):\n    graph = [[] for _ in range(numCourses)]\n    indeg = [0] * numCourses\n    for a, b in prerequisites:\n        graph[b].append(a)\n        indeg[a] += 1\n    ready = [i for i in range(numCourses) if indeg[i] == 0]\n    taken = 0\n    while ready:\n        c = ready.pop()\n        taken += 1\n        for nxt in graph[c]:\n            @@1@@\n            if indeg[nxt] == 0:\n                ready.append(nxt)\n    @@2@@\n",
+    "blanks": [
+     {
+      "answer": "indeg[nxt] -= 1"
+     },
+     {
+      "answer": "return taken == numCourses"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Course Schedule",
+    "link": "https://leetcode.com/problems/course-schedule",
+    "companies": 43,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "graph_shortest_path",
+   "world": 5,
+   "order": 6,
+   "title": "Shortest Path in a Grid",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+   ],
+   "complexity": "O(rows * cols) time and space",
+   "description": "`grid` has 0 for open cells and 1 for walls. Starting at the top-left cell and moving up, down, left or right through open cells, return the fewest steps needed to reach the bottom-right cell, or -1 if that is impossible. A 1x1 open grid needs 0 steps; if the start or end is a wall the answer is -1.",
+   "constraints": [
+    "1 <= rows, cols <= 100"
+   ],
+   "examples": [
+    {
+     "input": "grid = [[0, 0, 0], [1, 1, 0], [0, 0, 0]]",
+     "output": "4",
+     "note": "Right, right, down, down = 4 steps"
+    },
+    {
+     "input": "grid = [[0, 1], [1, 0]]",
+     "output": "-1",
+     "note": ""
+    }
+   ],
+   "function": "shortestPath",
+   "signature": "def shortestPath(grid):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "grid"
+   ],
+   "starter": "def shortestPath(grid):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        1,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": -1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       [
+        0
+       ]
+      ]
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ]
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        1,
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        1,
+        0
+       ],
+       [
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 7
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        0,
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        1
+       ],
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        0,
+        0
+       ]
+      ]
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": 7
+    },
+    {
+     "args": [
+      [
+       [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+       ]
+      ]
+     ],
+     "expected": 8
+    },
+    {
+     "args": [
+      [
+       [
+        1
+       ],
+       [
+        0
+       ]
+      ]
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       [
+        0
+       ],
+       [
+        1
+       ],
+       [
+        0
+       ]
+      ]
+     ],
+     "expected": -1
+    }
+   ],
+   "hints": [
+    "Every step costs the same, so breadth-first search finds the shortest path.",
+    "Store the distance with each queued cell."
+   ],
+   "beginner": {
+    "prompt": "The shortest path in an unweighted grid is found with:",
+    "options": [
+     "Sorting the rows",
+     "DFS",
+     "BFS from the start cell",
+     "Binary search"
+    ],
+    "answer": 2,
+    "explanation": "BFS reaches cells in order of distance."
+   },
+   "intermediate": {
+    "template": "from collections import deque\n\n\ndef shortestPath(grid):\n    rows, cols = len(grid), len(grid[0])\n    if grid[0][0] == 1 or grid[rows - 1][cols - 1] == 1:\n        return -1\n    queue = deque([(0, 0, 0)])\n    seen = {(0, 0)}\n    while queue:\n        r, c, d = queue.popleft()\n        if (r, c) == (rows - 1, cols - 1):\n            @@1@@\n        for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):\n            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 0 and (nr, nc) not in seen:\n                seen.add((nr, nc))\n                @@2@@\n    return -1\n",
+    "blanks": [
+     {
+      "answer": "return d"
+     },
+     {
+      "answer": "queue.append((nr, nc, d + 1))"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Shortest Path in Binary Matrix",
+    "link": "https://leetcode.com/problems/shortest-path-in-binary-matrix",
+    "companies": 13,
+    "max_frequency": 80.2
+   }
+  },
+  {
+   "id": "dp_climbing_stairs",
+   "world": 6,
+   "order": 1,
+   "title": "Climbing Stairs",
+   "difficulty": "easy",
+   "topics": [
+    "Math",
+    "Dynamic Programming",
+    "Memoization"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "You climb a staircase of n steps, taking 1 or 2 steps at a time. Return how many distinct ways there are to reach the top.",
+   "constraints": [
+    "1 <= n <= 45"
+   ],
+   "examples": [
+    {
+     "input": "n = 2",
+     "output": "2",
+     "note": "1+1 or 2"
+    },
+    {
+     "input": "n = 3",
+     "output": "3",
+     "note": "1+1+1, 1+2 or 2+1"
+    }
+   ],
+   "function": "climbStairs",
+   "signature": "def climbStairs(n):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "n"
+   ],
+   "starter": "def climbStairs(n):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      2
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      3
+     ],
+     "expected": 3
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      1
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      30
+     ],
+     "expected": 1346269
+    },
+    {
+     "args": [
+      45
+     ],
+     "expected": 1836311903
+    },
+    {
+     "args": [
+      40
+     ],
+     "expected": 165580141
+    },
+    {
+     "args": [
+      10
+     ],
+     "expected": 89
+    },
+    {
+     "args": [
+      7
+     ],
+     "expected": 21
+    },
+    {
+     "args": [
+      27
+     ],
+     "expected": 317811
+    },
+    {
+     "args": [
+      37
+     ],
+     "expected": 39088169
+    },
+    {
+     "args": [
+      36
+     ],
+     "expected": 24157817
+    },
+    {
+     "args": [
+      9
+     ],
+     "expected": 55
+    },
+    {
+     "args": [
+      11
+     ],
+     "expected": 144
+    }
+   ],
+   "hints": [
+    "To stand on step n you came from step n-1 or n-2.",
+    "ways(n) = ways(n-1) + ways(n-2) - you only need the last two values."
+   ],
+   "beginner": {
+    "prompt": "The number of ways to reach step n equals:",
+    "options": [
+     "ways(n-1) - 1",
+     "n * n",
+     "ways(n-1) * 2",
+     "ways(n-1) + ways(n-2)"
+    ],
+    "answer": 3,
+    "explanation": "The last move was either 1 step or 2 steps: a Fibonacci recurrence."
+   },
+   "intermediate": {
+    "template": "def climbStairs(n):\n    @@1@@\n    for _ in range(n - 1):\n        @@2@@\n    return b\n",
+    "blanks": [
+     {
+      "answer": "a, b = 1, 1"
+     },
+     {
+      "answer": "a, b = b, a + b"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Climbing Stairs",
+    "link": "https://leetcode.com/problems/climbing-stairs",
+    "companies": 33,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "dp_house_robber",
+   "world": 6,
+   "order": 2,
+   "title": "House Robber",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Dynamic Programming"
+   ],
+   "complexity": "O(n) time, O(1) space",
+   "description": "`nums[i]` is the money in house i along a street. You cannot rob two adjacent houses. Return the largest total you can collect.",
+   "constraints": [
+    "0 <= len(nums) <= 100"
+   ],
+   "examples": [
+    {
+     "input": "nums = [1, 2, 3, 1]",
+     "output": "4",
+     "note": "Rob houses 0 and 2: 1 + 3 = 4"
+    },
+    {
+     "input": "nums = [2, 7, 9, 3, 1]",
+     "output": "12",
+     "note": ""
+    }
+   ],
+   "function": "rob",
+   "signature": "def rob(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def rob(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       1
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       2,
+       7,
+       9,
+       3,
+       1
+      ]
+     ],
+     "expected": 12
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      []
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       5
+      ]
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       2,
+       1,
+       1,
+       2
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       9,
+       6,
+       2,
+       7
+      ]
+     ],
+     "expected": 16
+    },
+    {
+     "args": [
+      [
+       14,
+       15,
+       6,
+       19,
+       3,
+       4,
+       15,
+       16,
+       14
+      ]
+     ],
+     "expected": 63
+    },
+    {
+     "args": [
+      [
+       15
+      ]
+     ],
+     "expected": 15
+    },
+    {
+     "args": [
+      [
+       20,
+       11,
+       16
+      ]
+     ],
+     "expected": 36
+    },
+    {
+     "args": [
+      [
+       10,
+       3,
+       10,
+       11,
+       19,
+       11,
+       7
+      ]
+     ],
+     "expected": 46
+    },
+    {
+     "args": [
+      [
+       1,
+       16,
+       18,
+       5
+      ]
+     ],
+     "expected": 21
+    },
+    {
+     "args": [
+      [
+       3,
+       2,
+       3,
+       15
+      ]
+     ],
+     "expected": 18
+    },
+    {
+     "args": [
+      [
+       5,
+       2,
+       6,
+       6,
+       1
+      ]
+     ],
+     "expected": 12
+    }
+   ],
+   "hints": [
+    "At each house you either rob it (plus best from two houses back) or skip it.",
+    "Keep two running values: best if you take this house, best if you skip it."
+   ],
+   "beginner": {
+    "prompt": "At each house the best total is:",
+    "options": [
+     "Always rob it",
+     "The better of robbing it (plus the best two houses back) or skipping it",
+     "Only alternate houses",
+     "The sum of all houses"
+    ],
+    "answer": 1,
+    "explanation": "A one-step recurrence over the previous two states."
+   },
+   "intermediate": {
+    "template": "def rob(nums):\n    take, skip = 0, 0\n    for x in nums:\n        @@1@@\n    @@2@@\n",
+    "blanks": [
+     {
+      "answer": "take, skip = skip + x, max(take, skip)"
+     },
+     {
+      "answer": "return max(take, skip)"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "House Robber",
+    "link": "https://leetcode.com/problems/house-robber",
+    "companies": 35,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "dp_coin_change",
+   "world": 6,
+   "order": 3,
+   "title": "Coin Change",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Dynamic Programming",
+    "Breadth-First Search",
+    "Knapsack Problem",
+    "Complete Knapsack"
+   ],
+   "complexity": "O(amount * len(coins)) time, O(amount) space",
+   "description": "Given coin denominations (unlimited supply of each) and a target `amount`, return the fewest coins that add up to the amount, or -1 if it cannot be made. An amount of 0 needs 0 coins.",
+   "constraints": [
+    "1 <= len(coins) <= 12",
+    "0 <= amount <= 10^4"
+   ],
+   "examples": [
+    {
+     "input": "coins = [1, 2, 5], amount = 11",
+     "output": "3",
+     "note": "11 = 5 + 5 + 1"
+    },
+    {
+     "input": "coins = [2], amount = 3",
+     "output": "-1",
+     "note": "Only even totals are possible"
+    }
+   ],
+   "function": "coinChange",
+   "signature": "def coinChange(coins, amount):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "coins",
+    "amount"
+   ],
+   "starter": "def coinChange(coins, amount):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       2,
+       5
+      ],
+      11
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       2
+      ],
+      3
+     ],
+     "expected": -1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ],
+      0
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       5,
+       3
+      ],
+      7
+     ],
+     "expected": -1
+    },
+    {
+     "args": [
+      [
+       1,
+       3,
+       4
+      ],
+      6
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       5,
+       7
+      ],
+      29
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       3,
+       8,
+       1
+      ],
+      29
+     ],
+     "expected": 6
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      4
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       1
+      ],
+      19
+     ],
+     "expected": 19
+    },
+    {
+     "args": [
+      [
+       2
+      ],
+      0
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       10,
+       8,
+       1,
+       6
+      ],
+      14
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       2,
+       3
+      ],
+      19
+     ],
+     "expected": 7
+    },
+    {
+     "args": [
+      [
+       10
+      ],
+      21
+     ],
+     "expected": -1
+    }
+   ],
+   "hints": [
+    "Greedy fails for sets like [1, 3, 4] and amount 6.",
+    "dp[a] = 1 + min(dp[a - coin]) over coins that fit."
+   ],
+   "beginner": {
+    "prompt": "Why does 'always take the largest coin' fail?",
+    "options": [
+     "It is always correct",
+     "Unlimited coins break it",
+     "Some coin sets need smaller coins first (e.g. [1,3,4] for 6), so use DP",
+     "Coin order does not matter"
+    ],
+    "answer": 2,
+    "explanation": "Greedy picks 4+1+1 (3 coins) instead of 3+3 (2 coins)."
+   },
+   "intermediate": {
+    "template": "def coinChange(coins, amount):\n    INF = amount + 1\n    dp = [0] + [INF] * amount\n    for a in range(1, amount + 1):\n        for c in coins:\n            if c <= a:\n                @@1@@\n    @@2@@\n",
+    "blanks": [
+     {
+      "answer": "dp[a] = min(dp[a], dp[a - c] + 1)"
+     },
+     {
+      "answer": "return dp[amount] if dp[amount] < INF else -1"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Coin Change",
+    "link": "https://leetcode.com/problems/coin-change",
+    "companies": 35,
+    "max_frequency": 92.1
+   }
+  },
+  {
+   "id": "dp_lis",
+   "world": 6,
+   "order": 4,
+   "title": "Longest Increasing Subsequence",
+   "difficulty": "medium",
+   "topics": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Longest Increasing Subsequence"
+   ],
+   "complexity": "O(n^2) time (O(n log n) possible)",
+   "description": "Return the length of the longest strictly increasing subsequence of `nums`. Elements keep their original order but do not need to be adjacent.",
+   "constraints": [
+    "1 <= len(nums) <= 2500"
+   ],
+   "examples": [
+    {
+     "input": "nums = [10, 9, 2, 5, 3, 7, 101, 18]",
+     "output": "4",
+     "note": "One answer is 2, 3, 7, 101"
+    },
+    {
+     "input": "nums = [7, 7, 7, 7]",
+     "output": "1",
+     "note": ""
+    }
+   ],
+   "function": "lengthOfLIS",
+   "signature": "def lengthOfLIS(nums):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "nums"
+   ],
+   "starter": "def lengthOfLIS(nums):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       10,
+       9,
+       2,
+       5,
+       3,
+       7,
+       101,
+       18
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       7,
+       7,
+       7,
+       7
+      ]
+     ],
+     "expected": 1
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       5
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       1,
+       2,
+       3,
+       4
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       4,
+       3,
+       2,
+       1
+      ]
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      [
+       -3,
+       13,
+       6,
+       0,
+       13,
+       -3
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       1,
+       14,
+       10,
+       -1,
+       2,
+       -3,
+       -1,
+       4
+      ]
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      [
+       10,
+       14,
+       4,
+       -1,
+       6,
+       14,
+       15,
+       4,
+       15,
+       8,
+       3
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       3,
+       1,
+       4,
+       9,
+       8,
+       5,
+       14,
+       15,
+       7
+      ]
+     ],
+     "expected": 5
+    },
+    {
+     "args": [
+      [
+       11,
+       0,
+       4
+      ]
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      [
+       1,
+       2,
+       11,
+       -4,
+       1,
+       14,
+       -2,
+       5
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       -1,
+       3,
+       5,
+       11,
+       6,
+       -4
+      ]
+     ],
+     "expected": 4
+    },
+    {
+     "args": [
+      [
+       -5
+      ]
+     ],
+     "expected": 1
+    }
+   ],
+   "hints": [
+    "Let dp[i] be the best length ending exactly at index i.",
+    "dp[i] = 1 + max(dp[j]) for earlier j with nums[j] < nums[i]."
+   ],
+   "beginner": {
+    "prompt": "In the O(n^2) solution, dp[i] means:",
+    "options": [
+     "Longest one anywhere",
+     "Sum of the subsequence",
+     "Length of the longest increasing subsequence ending at index i",
+     "Count of elements"
+    ],
+    "answer": 2,
+    "explanation": "The answer is the maximum dp value over all i."
+   },
+   "intermediate": {
+    "template": "def lengthOfLIS(nums):\n    dp = [1] * len(nums)\n    for i in range(len(nums)):\n        for j in range(i):\n            @@1@@\n                @@2@@\n    return max(dp)\n",
+    "blanks": [
+     {
+      "answer": "if nums[j] < nums[i]:"
+     },
+     {
+      "answer": "dp[i] = max(dp[i], dp[j] + 1)"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Longest Increasing Subsequence",
+    "link": "https://leetcode.com/problems/longest-increasing-subsequence",
+    "companies": 25,
+    "max_frequency": 100.0
+   }
+  },
+  {
+   "id": "dp_lcs",
+   "world": 6,
+   "order": 5,
+   "title": "Longest Common Subsequence",
+   "difficulty": "medium",
+   "topics": [
+    "String",
+    "Dynamic Programming",
+    "Longest Common Subsequence"
+   ],
+   "complexity": "O(m * n) time and space",
+   "description": "Return the length of the longest subsequence that appears in both strings in the same order (the characters do not need to be next to each other). Return 0 if there is none.",
+   "constraints": [
+    "1 <= len(text1), len(text2) <= 1000"
+   ],
+   "examples": [
+    {
+     "input": "text1 = 'abcde', text2 = 'ace'",
+     "output": "3",
+     "note": "The common subsequence is 'ace'"
+    },
+    {
+     "input": "text1 = 'abc', text2 = 'def'",
+     "output": "0",
+     "note": ""
+    }
+   ],
+   "function": "longestCommonSubsequence",
+   "signature": "def longestCommonSubsequence(text1, text2):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "text1",
+    "text2"
+   ],
+   "starter": "def longestCommonSubsequence(text1, text2):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      "abcde",
+      "ace"
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      "abc",
+      "def"
+     ],
+     "expected": 0
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      "a",
+      "a"
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      "a",
+      "b"
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      "cbaab",
+      "bbdbcbc"
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      "cc",
+      "dca"
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      "bbc",
+      "dbcdcdaa"
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      "cccbad",
+      "ccdbc"
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      "bcccdd",
+      "dcdba"
+     ],
+     "expected": 2
+    },
+    {
+     "args": [
+      "cabdc",
+      "addaaaac"
+     ],
+     "expected": 3
+    },
+    {
+     "args": [
+      "b",
+      "bdbdaacd"
+     ],
+     "expected": 1
+    },
+    {
+     "args": [
+      "a",
+      "caca"
+     ],
+     "expected": 1
+    }
+   ],
+   "hints": [
+    "Let dp[i][j] be the answer for the first i and first j characters.",
+    "Equal last characters extend the diagonal; otherwise take the better of dropping one character from either string."
+   ],
+   "beginner": {
+    "prompt": "If text1[i-1] == text2[j-1], then dp[i][j] equals:",
+    "options": [
+     "max(dp[i-1][j], dp[i][j-1])",
+     "dp[i][j-1]",
+     "dp[i-1][j-1] + 1",
+     "0"
+    ],
+    "answer": 2,
+    "explanation": "A matching pair extends the best answer of both shorter prefixes."
+   },
+   "intermediate": {
+    "template": "def longestCommonSubsequence(text1, text2):\n    m, n = len(text1), len(text2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i - 1] == text2[j - 1]:\n                @@1@@\n            else:\n                @@2@@\n    return dp[m][n]\n",
+    "blanks": [
+     {
+      "answer": "dp[i][j] = dp[i - 1][j - 1] + 1"
+     },
+     {
+      "answer": "dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])"
+     }
+    ]
+   },
+   "source": {
+    "repo": "liquidslr/leetcode-company-wise-problems",
+    "title": "Longest Common Subsequence",
+    "link": "https://leetcode.com/problems/longest-common-subsequence",
+    "companies": 19,
+    "max_frequency": 68.0
+   }
+  },
+  {
+   "id": "dp_knapsack",
+   "world": 6,
+   "order": 6,
+   "title": "0/1 Knapsack",
+   "difficulty": "medium",
+   "topics": [
+    "Dynamic Programming"
+   ],
+   "complexity": "O(items * capacity) time, O(capacity) space",
+   "description": "Each item has a weight and a value and can be taken at most once. Return the largest total value whose total weight does not exceed `capacity`.",
+   "constraints": [
+    "1 <= items <= 100",
+    "0 <= capacity <= 1000"
+   ],
+   "examples": [
+    {
+     "input": "weights = [1, 3, 4, 5], values = [1, 4, 5, 7], capacity = 7",
+     "output": "9",
+     "note": "Take the items of weight 3 and 4 for value 9"
+    },
+    {
+     "input": "weights = [2, 3], values = [10, 20], capacity = 1",
+     "output": "0",
+     "note": "Nothing fits"
+    }
+   ],
+   "function": "knapsack",
+   "signature": "def knapsack(weights, values, capacity):",
+   "kind": "function",
+   "options": {},
+   "class_name": null,
+   "compare": "exact",
+   "arg_names": [
+    "weights",
+    "values",
+    "capacity"
+   ],
+   "starter": "def knapsack(weights, values, capacity):\n    # Write your solution here\n    pass\n",
+   "samples": [
+    {
+     "args": [
+      [
+       1,
+       3,
+       4,
+       5
+      ],
+      [
+       1,
+       4,
+       5,
+       7
+      ],
+      7
+     ],
+     "expected": 9
+    },
+    {
+     "args": [
+      [
+       2,
+       3
+      ],
+      [
+       10,
+       20
+      ],
+      1
+     ],
+     "expected": 0
+    }
+   ],
+   "hidden": [
+    {
+     "args": [
+      [
+       1
+      ],
+      [
+       5
+      ],
+      0
+     ],
+     "expected": 0
+    },
+    {
+     "args": [
+      [
+       3
+      ],
+      [
+       9
+      ],
+      3
+     ],
+     "expected": 9
+    },
+    {
+     "args": [
+      [
+       3,
+       4,
+       3
+      ],
+      [
+       19,
+       2,
+       14
+      ],
+      9
+     ],
+     "expected": 33
+    },
+    {
+     "args": [
+      [
+       8,
+       6,
+       6,
+       2,
+       2
+      ],
+      [
+       11,
+       15,
+       8,
+       6,
+       12
+      ],
+      4
+     ],
+     "expected": 18
+    },
+    {
+     "args": [
+      [
+       4,
+       6,
+       4,
+       5,
+       1,
+       2
+      ],
+      [
+       1,
+       11,
+       4,
+       15,
+       16,
+       14
+      ],
+      5
+     ],
+     "expected": 30
+    },
+    {
+     "args": [
+      [
+       8,
+       5,
+       6,
+       2
+      ],
+      [
+       7,
+       20,
+       2,
+       14
+      ],
+      12
+     ],
+     "expected": 34
+    },
+    {
+     "args": [
+      [
+       4,
+       2
+      ],
+      [
+       17,
+       4
+      ],
+      12
+     ],
+     "expected": 21
+    },
+    {
+     "args": [
+      [
+       2,
+       4,
+       7,
+       6,
+       3
+      ],
+      [
+       4,
+       16,
+       9,
+       4,
+       18
+      ],
+      12
+     ],
+     "expected": 38
+    },
+    {
+     "args": [
+      [
+       5,
+       5,
+       2,
+       8,
+       3
+      ],
+      [
+       2,
+       11,
+       12,
+       5,
+       6
+      ],
+      6
+     ],
+     "expected": 18
+    },
+    {
+     "args": [
+      [
+       6
+      ],
+      [
+       3
+      ],
+      6
+     ],
+     "expected": 3
+    }
+   ],
+   "hints": [
+    "dp[c] is the best value achievable with capacity c.",
+    "For each item, update capacities from high to low so the item is used only once."
+   ],
+   "beginner": {
+    "prompt": "Why loop capacity downward for 0/1 knapsack with one array?",
+    "options": [
+     "Each item may be used once; going upward would reuse it",
+     "Values are negative",
+     "It is faster",
+     "The array is reversed"
+    ],
+    "answer": 0,
+    "explanation": "Downward order keeps dp[cap - w] from the previous item row."
+   },
+   "intermediate": {
+    "template": "def knapsack(weights, values, capacity):\n    dp = [0] * (capacity + 1)\n    for w, v in zip(weights, values):\n        @@1@@\n            @@2@@\n    return dp[capacity]\n",
+    "blanks": [
+     {
+      "answer": "for cap in range(capacity, w - 1, -1):"
+     },
+     {
+      "answer": "dp[cap] = max(dp[cap], dp[cap - w] + v)"
+     }
+    ]
+   },
+   "source": {
+    "repo": null,
+    "title": null,
+    "link": null,
+    "companies": 0,
+    "max_frequency": 0
+   }
+  }
+ ]
+}
