@@ -346,5 +346,6 @@ Built with ❤️ using Python and Pygame.
 **DSA Jungle Solver**
 
 *Explore the Jungle. Solve DSA. Conquer Challenges.*
+Here is new way to learn DSA
 
 ⭐ If you like this project, consider giving the repository a star!
